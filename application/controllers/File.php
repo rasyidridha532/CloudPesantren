@@ -20,7 +20,7 @@ class File extends CI_Controller
     public function index()
     {
         $fotoprofil = $this->session->userdata('gambar');
-        $nama = $this->session->userdata('nama');
+        $namasession = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
 
         $q = urldecode($this->input->get('q', TRUE));
@@ -42,10 +42,15 @@ class File extends CI_Controller
                 'total_rows' => $config['total_rows'],
                 'start' => $start,
                 'foto' => $fotoprofil,
-                'nama' => $nama,
+                'nama' => $namasession,
                 'role' => $role,
                 'title' => 'File'
             );
+
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('file/tbl_file_list', $data);
+            $this->load->view('template/footer');
         } else {
             $id_user = $this->session->userdata('id');
             $file = $this->File_model->get_limit_data_by_id($config['per_page'], $start, $q, $id_user);
@@ -61,12 +66,12 @@ class File extends CI_Controller
                 'id_user' => $id_user,
                 'title' => 'File'
             );
-        }
 
-        $this->load->view('template/header', $data);
-        $this->load->view('template/sidebar');
-        $this->load->view('file/tbl_file_list', $data);
-        $this->load->view('template/footer');
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('file/tbl_file_list', $data);
+            $this->load->view('template/footer');
+        }
     }
 
     public function create()

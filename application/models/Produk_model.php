@@ -61,6 +61,13 @@ class Produk_model extends CI_Model
         $this->db->insert($this->table, $data);
     }
 
+    function get_jenis()
+    {
+        $this->db->select('id_jenis,nama_jenis');
+        $query = $this->db->get('tbl_jenis');
+        return $query;
+    }
+
     // update data
     function update($id, $data)
     {

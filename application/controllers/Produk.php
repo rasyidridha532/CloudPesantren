@@ -48,23 +48,6 @@ class Produk extends CI_Controller
         $this->load->view('produk/tbl_produk_list', $data);
     }
 
-    public function read($id)
-    {
-        $row = $this->Produk_model->get_by_id($id);
-        if ($row) {
-            $data = array(
-                'id_produk' => $row->id_produk,
-                'nama_produk' => $row->nama_produk,
-                'jenis' => $row->jenis,
-                'harga' => $row->harga,
-            );
-            $this->load->view('produk/tbl_produk_read', $data);
-        } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('produk'));
-        }
-    }
-
     public function create()
     {
         $data = array(

@@ -48,60 +48,41 @@ class Users extends CI_Controller
         $this->load->view('users/tbl_users_list', $data);
     }
 
-    public function read($id)
-    {
-        $row = $this->Users_model->get_by_id($id);
-        if ($row) {
-            $data = array(
-                'id' => $row->id,
-                'nama' => $row->nama,
-                'email' => $row->email,
-                'password' => $row->password,
-                'gambar' => $row->gambar,
-                'role' => $row->role,
-            );
-            $this->load->view('users/tbl_users_read', $data);
-        } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('users'));
-        }
-    }
+    // public function create()
+    // {
+    //     $data = array(
+    //         'button' => 'Create',
+    //         'action' => site_url('users/create_action'),
+    //         'id' => set_value('id'),
+    //         'nama' => set_value('nama'),
+    //         'email' => set_value('email'),
+    //         'password' => set_value('password'),
+    //         'gambar' => set_value('gambar'),
+    //         'role' => set_value('role'),
+    //     );
+    //     $this->load->view('users/tbl_users_form', $data);
+    // }
 
-    public function create()
-    {
-        $data = array(
-            'button' => 'Create',
-            'action' => site_url('users/create_action'),
-            'id' => set_value('id'),
-            'nama' => set_value('nama'),
-            'email' => set_value('email'),
-            'password' => set_value('password'),
-            'gambar' => set_value('gambar'),
-            'role' => set_value('role'),
-        );
-        $this->load->view('users/tbl_users_form', $data);
-    }
+    // public function create_action()
+    // {
+    //     $this->_rules();
 
-    public function create_action()
-    {
-        $this->_rules();
+    //     if ($this->form_validation->run() == FALSE) {
+    //         $this->create();
+    //     } else {
+    //         $data = array(
+    //             'nama' => $this->input->post('nama', TRUE),
+    //             'email' => $this->input->post('email', TRUE),
+    //             'password' => $this->input->post('password', TRUE),
+    //             'gambar' => $this->input->post('gambar', TRUE),
+    //             'role' => $this->input->post('role', TRUE),
+    //         );
 
-        if ($this->form_validation->run() == FALSE) {
-            $this->create();
-        } else {
-            $data = array(
-                'nama' => $this->input->post('nama', TRUE),
-                'email' => $this->input->post('email', TRUE),
-                'password' => $this->input->post('password', TRUE),
-                'gambar' => $this->input->post('gambar', TRUE),
-                'role' => $this->input->post('role', TRUE),
-            );
-
-            $this->Users_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('users'));
-        }
-    }
+    //         $this->Users_model->insert($data);
+    //         $this->session->set_flashdata('message', 'Create Record Success');
+    //         redirect(site_url('users'));
+    //     }
+    // }
 
     public function update($id)
     {
@@ -116,7 +97,7 @@ class Users extends CI_Controller
                 'email' => set_value('email', $row->email),
                 'password' => set_value('password', $row->password),
                 'gambar' => set_value('gambar', $row->gambar),
-                'role' => set_value('role', $row->role),
+                'role' => set_value('role', $row->role)
             );
             $this->load->view('users/tbl_users_form', $data);
         } else {

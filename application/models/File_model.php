@@ -46,6 +46,12 @@ class File_model extends CI_Model
         return $this->db->count_all_results();
     }
 
+    function total($id)
+    {
+        $this->db->where($this->table, $id);
+        return $this->db->count_all_results();
+    }
+
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL)
     {

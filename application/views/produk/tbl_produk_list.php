@@ -41,7 +41,7 @@
                         <tr>
                             <th>No</th>
                             <th>Nama Produk</th>
-                            <th>Jenis</th>
+                            <th>Jenis Produk</th>
                             <th>Harga</th>
                             <th>Action</th>
                         </tr>
@@ -53,7 +53,7 @@
                             <td width="80px"><?php echo ++$start ?></td>
                             <td><?php echo $produk->nama_produk ?></td>
                             <td><?php echo $produk->nama_jenis ?></td>
-                            <td><?php echo $produk->harga ?></td>
+                            <td>Rp<?php echo $produk->harga ?></td>
                             <td>
                                 <a href="<?= site_url('produk/update/' . $produk->id_produk); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
                                 <a href="<?= site_url('produk/delete/' . $produk->id_produk); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>

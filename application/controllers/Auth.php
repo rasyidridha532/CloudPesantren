@@ -88,7 +88,7 @@ class Auth extends CI_Controller
             $this->register();
         } else {
             $fotoprofil = $this->_upload_foto();
-            $namagambar = $fotoprofil['namagambar'];
+            $namagambar = $fotoprofil['nama_gambar'];
 
             $data = [
                 'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
@@ -128,7 +128,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', $this->upload->display_errors());
         } else {
             $fileData = $this->upload->data();
-            $uploadfoto['namagambar'] = $fileData['file_name'];
+            $uploadfoto['nama_gambar'] = $fileData['file_name'];
         }
 
         if (!empty($uploadfoto)) {

@@ -78,7 +78,7 @@ class Produk extends CI_Controller
 
     public function create_action()
     {
-        $this->_rules();
+        // $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();

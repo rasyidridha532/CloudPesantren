@@ -60,7 +60,7 @@ class Auth extends CI_Controller
                 if ($cek['role'] == 'admin') {
                     $role = 'Admin';
                 } else {
-                    $role = 'Anggota';
+                    $role = 'Pengelola';
                 }
 
                 if (isset($cek)) {
@@ -155,10 +155,6 @@ class Auth extends CI_Controller
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
             'matches' => 'Password tidak sama!'
-        ]);
-
-        $this->form_validation->set_rules('role', 'role', 'required' . [
-            'required' => 'Pilih Role Terlebih Dahulu'
         ]);
     }
 }

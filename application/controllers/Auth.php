@@ -49,7 +49,7 @@ class Auth extends CI_Controller
                 'password' => sha1($password)
             );
 
-            $cek = $this->Login_model->cekLogin('tbl_users', $where)->row_array();
+            $cek = $this->Users_model->cekLogin('tbl_users', $where)->row_array();
 
             $nama = $cek['nama'];
             $gambar = $cek['image'];
@@ -113,7 +113,7 @@ class Auth extends CI_Controller
 
     private function _upload_foto()
     {
-        $uploadFile = [];
+        $uploadfoto = [];
 
         $config['upload_path'] = './uploads/file/fotoprofil/';
         $config['allowed_types'] = 'jpg|png|jpeg';

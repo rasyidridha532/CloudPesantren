@@ -156,5 +156,9 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
             'matches' => 'Password tidak sama!'
         ]);
+
+        $this->form_validation->set_rules('role', 'Role', 'required', [
+            'required' => 'Isi Nama File Terlebih Dahulu!'
+        ]);
     }
 }

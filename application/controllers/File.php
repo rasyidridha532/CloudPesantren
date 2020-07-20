@@ -191,9 +191,9 @@ class File extends CI_Controller
 
     public function _rules()
     {
-        // $this->form_validation->set_rules('judul', 'judul', 'trim|required' . [
-        //     'required' => 'Nama File Harus Diisi!'
-        // ]);
+        $this->form_validation->set_rules('judul', 'judul', 'trim|required', [
+            'required' => 'Nama File Harus Diisi!'
+        ]);
 
         $this->form_validation->set_rules('id_file', 'id_file', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

@@ -32,7 +32,6 @@ class File_model extends CI_Model
     // get total rows
     function total_rows($q = NULL)
     {
-        $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->from($this->table);
@@ -42,7 +41,6 @@ class File_model extends CI_Model
     function total_row_by_id($q = NULL, $id)
     {
         $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
-        $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->from($this->table);
@@ -55,7 +53,6 @@ class File_model extends CI_Model
     {
         $this->db->join('tbl_users', 'tbl_file.id_user = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('nama', $q);
@@ -67,8 +64,7 @@ class File_model extends CI_Model
     {
         $this->db->select('id_file,judul,nama_file,size,uploaded_at,id_user');
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id_file', $q);
-        $this->db->or_like('judul', $q);
+        $this->db->like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->limit($limit, $start);
         return $this->db->get_where($this->table, array('id_user' => $id))->result();

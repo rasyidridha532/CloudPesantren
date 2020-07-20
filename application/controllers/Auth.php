@@ -90,13 +90,16 @@ class Auth extends CI_Controller
             $fotoprofil = $this->_upload_foto();
             $namagambar = $fotoprofil['nama_gambar'];
 
-            $data = [
+            $data = array(
                 'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
                 'email' => $this->input->post('email', true),
                 'password' => sha1($this->input->post('password1')),
                 'gambar' => $namagambar,
                 'role' => $this->input->post('role')
-            ];
+            );
+
+            // $data = [                
+            // ];
 
             $this->Users_model->insert($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
@@ -115,7 +118,7 @@ class Auth extends CI_Controller
     {
         $uploadfoto = [];
 
-        $config['upload_path'] = './uploads/file/fotoprofil/';
+        $config['upload_path'] = './uploads/fotoprofil/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 0;
         $config['max_height'] = 200;

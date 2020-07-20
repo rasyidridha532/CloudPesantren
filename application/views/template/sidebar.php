@@ -29,14 +29,16 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="<?= base_url('users'); ?>" class="nav-link <?= $this->uri->segment(1) == 'users' ? 'active' : '' ?>">
-              <i class="nav-icon fas fa-user"></i>
-              <p>
-                Data User
-              </p>
-            </a>
-          </li>
+          <?php if ($role == 'Admin') { ?>
+            <li class="nav-item">
+              <a href="<?= base_url('users'); ?>" class="nav-link <?= $this->uri->segment(1) == 'users' ? 'active' : '' ?>">
+                <i class="nav-icon fas fa-user"></i>
+                <p>
+                  Data User
+                </p>
+              </a>
+            </li>
+          <?php } ?>
           <li class="nav-item">
             <a href="<?= base_url('file'); ?>" class="nav-link <?= $this->uri->segment(1) == 'file' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-file-image"></i>

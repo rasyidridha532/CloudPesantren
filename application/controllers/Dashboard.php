@@ -49,11 +49,13 @@ class Dashboard extends CI_Controller
 			'title' => 'Dashboard',
 			'foto' => $fotoprofil,
 			'nama' => $nama,
-			'role' => $role,
+			'role' => $role
 		);
 
+		$peran = array('role' => $role);
+
 		$this->load->view('template/header', $data);
-		$this->load->view('template/sidebar');
+		$this->load->view('template/sidebar', $peran);
 		$this->load->view('dashboard', $user);
 		$this->load->view('template/footer');
 	}

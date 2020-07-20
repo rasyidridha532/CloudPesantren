@@ -24,20 +24,22 @@
       <!-- Small boxes (Stat box) -->
       <div class="row">
         <!-- ./col -->
-        <div class="col-lg-3 col-6">
-          <!-- small box -->
-          <div class="small-box bg-white">
-            <div class="inner">
-              <h3><?= $hitung_user; ?></h3>
+        <?php if ($role == 'Admin') { ?>
+          <div class="col-lg-3 col-6">
+            <!-- small box -->
+            <div class="small-box bg-white">
+              <div class="inner">
+                <h3><?= $hitung_user; ?></h3>
 
-              <p>User yang Terdaftar di Sistem</p>
+                <p>User yang Terdaftar di Sistem</p>
+              </div>
+              <div class="icon">
+                <i class="fa fa-users"></i>
+              </div>
+              <a href="<?= base_url('users'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
             </div>
-            <div class="icon">
-              <i class="fa fa-users"></i>
-            </div>
-            <a href="<?= base_url('users'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        <?php } ?>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->

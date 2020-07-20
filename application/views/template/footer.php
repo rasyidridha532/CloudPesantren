@@ -1,5 +1,5 @@
 <footer class="main-footer navbar-gray-dark">
-  <strong>Copyright &copy; 2020 <a href="https://opop.jabarprov.go.id/">OPOP One Pesantren One Product</a>.</strong>
+  <strong>Copyright &copy; 2020 <a href="https://www.daaruttauhiid.org">Pesantren Daarul Tauhid</a>.</strong>
   All rights reserved.
 </footer>
 

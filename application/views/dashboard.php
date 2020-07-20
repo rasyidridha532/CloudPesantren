@@ -28,20 +28,34 @@
           <!-- small box -->
           <div class="small-box bg-white">
             <div class="inner">
-              <h3><?= $hitung_pesantren; ?></h3>
+              <h3><?= $hitung_user; ?></h3>
 
-              <p>Pesantren yang Terdaftar di OPOP</p>
+              <p>User yang terdaftar di sistem</p>
             </div>
             <div class="icon">
-              <i class="fa fa-mosque"></i>
+              <i class="fa fa-users"></i>
             </div>
-            <a href="<?= base_url('pesantren'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+            <a href="<?= base_url('users'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
         <div class="col-lg-3 col-6">
           <!-- small box -->
           <div class="small-box bg-green">
+            <div class="inner">
+              <h3><?= $hitung_produk; ?></h3>
+
+              <p>Jumlah Produk</p>
+            </div>
+            <div class="icon">
+              <i class="fa fa-shopping-cart"></i>
+            </div>
+            <a href="<?= base_url('produk'); ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-blue">
             <div class="inner">
               <h3><?= $hitung_file; ?></h3>
 

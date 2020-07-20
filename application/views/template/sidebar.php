@@ -22,10 +22,18 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="<?= base_url('pesantren'); ?>" class="nav-link <?= $this->uri->segment(1) == 'pesantren' ? 'active' : '' ?>">
+            <a href="<?= base_url('produk'); ?>" class="nav-link <?= $this->uri->segment(1) == 'produk' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-mosque"></i>
               <p>
-                Data Pesantren
+                Data Produk
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="<?= base_url('users'); ?>" class="nav-link <?= $this->uri->segment(1) == 'users' ? 'active' : '' ?>">
+              <i class="nav-icon fas fa-user"></i>
+              <p>
+                Data User
               </p>
             </a>
           </li>
@@ -33,7 +41,7 @@
             <a href="<?= base_url('file'); ?>" class="nav-link <?= $this->uri->segment(1) == 'file' ? 'active' : '' ?>">
               <i class="nav-icon fas fa-file-image"></i>
               <p>
-                File OPOP
+                File Pesantren
               </p>
             </a>
           </li>

@@ -68,6 +68,7 @@ class File_model extends CI_Model
 
     function get_limit_data_by_id($limit, $start = 0, $q = NULL, $id)
     {
+        $this->db->select('id_file,judul,nama_file,size,uploaded_at,id_user');
         $this->db->join('tbl_users', 'tbl_file.id_user = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_file', $q);

@@ -2,7 +2,7 @@
   <aside class="main-sidebar sidebar-light-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?php echo base_url() ?>" class="brand-link">
-      <img src="<?php echo base_url(); ?>assets/dist/img/logo_opop.png" alt="Logo OPOP" width="80%" style="opacity: .8">
+      <img src="<?php echo base_url(); ?>assets/dist/img/logo_dt.png" alt="Logo DT" width="80%" style="opacity: .8">
       <!-- <span class="brand-text font-weight-light">OPOP</span> -->
     </a>
 

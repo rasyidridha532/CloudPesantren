@@ -19,20 +19,25 @@ class File extends CI_Controller
 
     public function index()
     {
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+        $id_user = $this->session->userdata('id');
+
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->File_model->total_rows($q);
-        $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
+
+        if ($role == 'Admin') {
+            $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
+        }
+
 
         $this->load->library('pagination');
         $this->pagination->initialize($config);
-
-        $fotoprofil = $this->session->userdata('gambar');
-        $nama = $this->session->userdata('nama');
-        $role = $this->session->userdata('role');
 
         $data = array(
             'file_data' => $file,

@@ -55,6 +55,7 @@ class Auth extends CI_Controller
                 $this->session->set_flashdata('messagelogin', '<div class="alert alert-warning">Email atau password salah!</div>');
                 redirect(site_url('auth/login'));
             } else {
+                $id_user = $cek['id'];
                 $nama = $cek['nama'];
                 $gambar = $cek['gambar'];
                 if ($cek['role'] == 'Admin') {
@@ -65,6 +66,7 @@ class Auth extends CI_Controller
 
                 if (isset($cek)) {
                     $data_session = array(
+                        'id' => $id_user,
                         'role' => $role,
                         'status' => 'login',
                         'gambar' => $gambar,

@@ -57,7 +57,7 @@ class File_model extends CI_Model
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL)
     {
-        $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
+        $this->db->join('tbl_users', 'tbl_file.id_user = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
@@ -71,7 +71,7 @@ class File_model extends CI_Model
 
     function get_limit_data_by_id($limit, $start = 0, $q = NULL, $id)
     {
-        $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
+        $this->db->join('tbl_users', 'tbl_file.id_user = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);

@@ -61,7 +61,7 @@ class File extends CI_Controller
                 'total_rows' => $config['total_rows'],
                 'start' => $start,
                 'foto' => $fotoprofil,
-                'nama' => $nama,
+                'nama' => $namasession,
                 'role' => $role,
                 'id_user' => $id_user,
                 'title' => 'File'

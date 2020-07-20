@@ -3,6 +3,9 @@
         <div class="content-fluid">
             <h2 style="margin-top:0px">Produk Pesantren</h2>
             <div style="margin-bottom: 10px">
+                <div class="col-12"><br><br>
+                    <?php echo anchor(site_url('produk/create'), 'Tambah Produk', 'class="btn btn-primary"'); ?>
+                </div>
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 8px" id="message alert alert-success">
                         <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>

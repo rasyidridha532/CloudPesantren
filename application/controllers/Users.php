@@ -73,7 +73,7 @@ class Users extends CI_Controller
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
-            $this->load->view('file/tbl_users_form', $data);
+            $this->load->view('users/tbl_users_form', $data);
             $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

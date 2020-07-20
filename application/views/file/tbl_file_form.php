@@ -16,7 +16,7 @@
         <?= form_open_multipart($action) ?>
         <div class="form-group">
             <label for="varchar">Judul <?php echo form_error('judul') ?></label>
-            <input type="text" class="form-control" name="judul" id="judul" placeholder="Judul" value="<?php echo $judul; ?>" />
+            <input type="text" class="form-control" name="judul" id="judul" value="<?php echo $judul; ?>" />
         </div>
         <div class="form-group">
             <label class="col-md-2 control-label" for="File">Pilih File...</label>

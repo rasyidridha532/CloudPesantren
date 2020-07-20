@@ -58,7 +58,7 @@ class File extends CI_Controller
         $role = $this->session->userdata('role');
 
         $data = array(
-            'button' => 'Create',
+            'button' => 'Upload',
             'action' => site_url('file/create_action'),
             'id_file' => set_value('id_file'),
             'judul' => set_value('judul'),

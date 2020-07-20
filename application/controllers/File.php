@@ -54,23 +54,25 @@ class File extends CI_Controller
         } else {
             $id_user = $this->session->userdata('id');
             $file = $this->File_model->get_limit_data_by_id($config['per_page'], $start, $q, $id_user);
-            $data = array(
-                'file_data' => $file,
-                'q' => $q,
-                'pagination' => $this->pagination->create_links(),
-                'total_rows' => $config['total_rows'],
-                'start' => $start,
-                'foto' => $fotoprofil,
-                'nama' => $namasession,
-                'role' => $role,
-                'id_user' => $id_user,
-                'title' => 'File'
-            );
+            print_r($file);
+            die();
+            // $data = array(
+            //     'file_data' => $file,
+            //     'q' => $q,
+            //     'pagination' => $this->pagination->create_links(),
+            //     'total_rows' => $config['total_rows'],
+            //     'start' => $start,
+            //     'foto' => $fotoprofil,
+            //     'nama' => $namasession,
+            //     'role' => $role,
+            //     'id_user' => $id_user,
+            //     'title' => 'File'
+            // );
 
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar');
-            $this->load->view('file/tbl_file_list', $data);
-            $this->load->view('template/footer');
+            // $this->load->view('template/header', $data);
+            // $this->load->view('template/sidebar');
+            // $this->load->view('file/tbl_file_list', $data);
+            // $this->load->view('template/footer');
         }
     }
 
@@ -114,6 +116,7 @@ class File extends CI_Controller
                 'role' => $role,
                 'action' => site_url('file/update_action' . $row->id_file),
                 'id_file' => set_value('id_file', $row->id_file),
+                'id_user' => set_value('id_user', $row->id_user),
                 'judul' => set_value('judul', $row->judul),
             );
             $this->load->view('template/header', $data);

@@ -50,7 +50,7 @@ class File_model extends CI_Model
         $this->db->or_like('size', $q);
         $this->db->or_like('uploaded_at', $q);
         $this->db->from($this->table);
-        $this->db->where('id_users', $id);
+        $this->db->where('id_user', $id);
         return $this->db->count_all_results();
     }
 

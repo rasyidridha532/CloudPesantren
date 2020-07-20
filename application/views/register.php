@@ -60,8 +60,8 @@
                 <div class="input-group mb-3">
                     <select class="form-control" name="role" id="role" required>
                         <option value="">--Pilih Role--</option>
-                        <option value="admin">Administrator</option>
-                        <option value="pengurus">Pengelola</option>
+                        <option value="Admin">Administrator</option>
+                        <option value="Pengurus">Pengelola</option>
                     </select>
                 </div>
                 <div class="input-group mb-3">

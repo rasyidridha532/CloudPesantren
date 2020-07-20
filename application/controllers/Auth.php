@@ -57,7 +57,7 @@ class Auth extends CI_Controller
             } else {
                 $nama = $cek['nama'];
                 $gambar = $cek['gambar'];
-                if ($cek['role'] == 'admin') {
+                if ($cek['role'] == 'Admin') {
                     $role = 'Admin';
                 } else {
                     $role = 'Pengelola';

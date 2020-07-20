@@ -98,7 +98,7 @@ class Auth extends CI_Controller
                 'role' => $this->input->post('role')
             ];
 
-            $this->db->insert('tbl_users', $data);
+            $this->Users_model->insert($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
             redirect('auth');
         }

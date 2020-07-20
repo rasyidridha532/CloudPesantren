@@ -88,12 +88,13 @@ class Auth extends CI_Controller
             $this->register();
         } else {
             $fotoprofil = $this->_upload_foto();
+            $namagambar = $fotoprofil['namagambar'];
 
             $data = [
                 'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
                 'email' => $this->input->post('email', true),
                 'password' => sha1($this->input->post('password1')),
-                'gambar' => $fotoprofil,
+                'gambar' => $namagambar,
                 'role' => $this->input->post('role')
             ];
 
@@ -112,6 +113,8 @@ class Auth extends CI_Controller
 
     private function _upload_foto()
     {
+        $uploadFile = [];
+
         $config['upload_path'] = './uploads/file/fotoprofil/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 0;
@@ -125,7 +128,7 @@ class Auth extends CI_Controller
             $this->session->set_flashdata('message', $this->upload->display_errors());
         } else {
             $fileData = $this->upload->data();
-            $uploadfoto = $fileData['file_name'];
+            $uploadfoto['namagambar'] = $fileData['file_name'];
         }
 
         if (!empty($uploadfoto)) {

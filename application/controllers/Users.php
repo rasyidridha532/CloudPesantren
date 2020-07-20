@@ -22,14 +22,6 @@ class Users extends CI_Controller
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
 
-        if ($q <> '') {
-            $config['base_url'] = base_url() . 'users/index.html?q=' . urlencode($q);
-            $config['first_url'] = base_url() . 'users/index.html?q=' . urlencode($q);
-        } else {
-            $config['base_url'] = base_url() . 'users/index.html';
-            $config['first_url'] = base_url() . 'users/index.html';
-        }
-
         $config['per_page'] = 10;
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->Users_model->total_rows($q);
@@ -38,68 +30,51 @@ class Users extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $data = array(
             'users_data' => $users,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'User'
         );
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
         $this->load->view('users/tbl_users_list', $data);
+        $this->load->view('template/footer');
     }
-
-    // public function create()
-    // {
-    //     $data = array(
-    //         'button' => 'Create',
-    //         'action' => site_url('users/create_action'),
-    //         'id' => set_value('id'),
-    //         'nama' => set_value('nama'),
-    //         'email' => set_value('email'),
-    //         'password' => set_value('password'),
-    //         'gambar' => set_value('gambar'),
-    //         'role' => set_value('role'),
-    //     );
-    //     $this->load->view('users/tbl_users_form', $data);
-    // }
-
-    // public function create_action()
-    // {
-    //     $this->_rules();
-
-    //     if ($this->form_validation->run() == FALSE) {
-    //         $this->create();
-    //     } else {
-    //         $data = array(
-    //             'nama' => $this->input->post('nama', TRUE),
-    //             'email' => $this->input->post('email', TRUE),
-    //             'password' => $this->input->post('password', TRUE),
-    //             'gambar' => $this->input->post('gambar', TRUE),
-    //             'role' => $this->input->post('role', TRUE),
-    //         );
-
-    //         $this->Users_model->insert($data);
-    //         $this->session->set_flashdata('message', 'Create Record Success');
-    //         redirect(site_url('users'));
-    //     }
-    // }
 
     public function update($id)
     {
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $row = $this->Users_model->get_by_id($id);
 
         if ($row) {
             $data = array(
                 'button' => 'Update',
+                'foto' => $fotoprofil,
+                'nama' => $nama,
+                'role' => $role,
                 'action' => site_url('users/update_action'),
                 'id' => set_value('id', $row->id),
                 'nama' => set_value('nama', $row->nama),
                 'email' => set_value('email', $row->email),
-                'password' => set_value('password', $row->password),
-                'gambar' => set_value('gambar', $row->gambar),
                 'role' => set_value('role', $row->role)
             );
-            $this->load->view('users/tbl_users_form', $data);
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('file/tbl_users_form', $data);
+            $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('users'));
@@ -113,11 +88,14 @@ class Users extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
+            $fotoprofil = $this->_upload_foto();
+            $namagambar = $fotoprofil['nama_gambar'];
+
             $data = array(
                 'nama' => $this->input->post('nama', TRUE),
                 'email' => $this->input->post('email', TRUE),
-                'password' => $this->input->post('password', TRUE),
-                'gambar' => $this->input->post('gambar', TRUE),
+                'password' => sha1($this->input->post('password1')),
+                'gambar' => $namagambar,
                 'role' => $this->input->post('role', TRUE),
             );
 
@@ -141,21 +119,54 @@ class Users extends CI_Controller
         }
     }
 
+    private function _upload_foto()
+    {
+        $uploadfoto = [];
+
+        $config['upload_path'] = './uploads/fotoprofil/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 0;
+        $config['max_height'] = 600;
+        $config['max_width'] = 600;
+        $config['file_name'] = 'Pesantren-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('gambar')) {
+            $this->session->set_flashdata('message', $this->upload->display_errors());
+            redirect('auth/register');
+        } else {
+            $fileData = $this->upload->data();
+            $uploadfoto['nama_gambar'] = $fileData['file_name'];
+        }
+
+        if (!empty($uploadfoto)) {
+            return $uploadfoto;
+        }
+    }
+
     public function _rules()
     {
-        $this->form_validation->set_rules('nama', 'nama', 'trim|required');
-        $this->form_validation->set_rules('email', 'email', 'trim|required');
-        $this->form_validation->set_rules('password', 'password', 'trim|required');
-        $this->form_validation->set_rules('gambar', 'gambar', 'trim|required');
-        $this->form_validation->set_rules('role', 'role', 'trim|required');
+        $this->form_validation->set_rules('nama', 'nama', 'trim|required', [
+            'required' => 'Nama Lengkap Harus Diisi!'
+        ]);
+        $this->form_validation->set_rules('email', 'email', 'required|trim|valid_email', [
+            'required' => 'Email Harus Diisi!',
+            'valid_email' => 'Alamat Email Harus Valid!'
+        ]);
+        $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[8]', [
+            'required' => 'Password Harus diisi!',
+            'min_length' => 'Password terlalu pendek!'
+        ]);
+        $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
+            'matches' => 'Password tidak sama!'
+        ]);
+
+        $this->form_validation->set_rules('role', 'role', 'trim|required' . [
+            'required' => 'Pilih Role Terlebih Dahulu'
+        ]);
 
         $this->form_validation->set_rules('id', 'id', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 }
-
-/* End of file Users.php */
-/* Location: ./application/controllers/Users.php */
-/* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator 2020-07-20 06:29:26 */
-/* http://harviacode.com */

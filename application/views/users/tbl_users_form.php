@@ -22,6 +22,14 @@
                 <input type="text" class="form-control" name="email" id="email" placeholder="Email" value="<?php echo $email; ?>" />
             </div>
             <div class="form-group">
+                <label for="alamat">Password<?php echo form_error('password1', '<small class="text-danger mt-6">', '</small>'); ?></label>
+                <input type="password" class="form-control" placeholder="Password" name="password1">
+            </div>
+            <div class="form-group">
+                <label for="alamat">Masukkan Kembali Password<?php echo form_error('password2', '<small class="text-danger mt-6">', '</small>'); ?></label>
+                <input type="password" class="form-control" placeholder="Password" name="password2">
+            </div>
+            <div class="form-group">
                 <label for="varchar">Gambar<?php echo form_error('gambar') ?></label>
                 <input type="file" name="gambar" class="form-control">
             </div>

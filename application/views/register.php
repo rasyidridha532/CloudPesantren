@@ -64,6 +64,7 @@
                         <option value="member">Pengelola</option>
                     </select>
                 </div>
+                <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="input-group mb-3">
                     <label for="myfile">Upload Foto Profil</label>
                 </div>

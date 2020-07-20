@@ -100,9 +100,6 @@ class Auth extends CI_Controller
                 'role' => $this->input->post('role')
             );
 
-            // $data = [                
-            // ];
-
             $this->Users_model->insert($data);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
             redirect('auth');
@@ -158,6 +155,10 @@ class Auth extends CI_Controller
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
             'matches' => 'Password tidak sama!'
+        ]);
+
+        $this->form_validation->set_rules('role', 'role', 'trim|required' . [
+            'required' => 'Pilih Role Terlebih Dahulu'
         ]);
     }
 }

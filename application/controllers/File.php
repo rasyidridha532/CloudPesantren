@@ -91,7 +91,10 @@ class File extends CI_Controller
                 'id_file' => set_value('id_file', $row->id_file),
                 'judul' => set_value('judul', $row->judul),
             );
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
             $this->load->view('file/tbl_file_form', $data);
+            $this->load->view('template/footer');
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('file'));

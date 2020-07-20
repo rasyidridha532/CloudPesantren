@@ -1,83 +1,75 @@
-<!doctype html>
-<html>
-    <head>
-        <title>harviacode.com - codeigniter crud generator</title>
-        <link rel="stylesheet" href="<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>"/>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 style="margin-top:0px">Tbl_produk List</h2>
-        <div class="row" style="margin-bottom: 10px">
-            <div class="col-md-4">
-                <?php echo anchor(site_url('produk/create'),'Create', 'class="btn btn-primary"'); ?>
-            </div>
-            <div class="col-md-4 text-center">
-                <div style="margin-top: 8px" id="message">
-                    <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="content-fluid">
+            <h2 style="margin-top:0px">Produk Pesantren</h2>
+            <div style="margin-bottom: 10px">
+                <div class="col-md-4 text-center">
+                    <div style="margin-top: 8px" id="message alert alert-success">
+                        <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
+                    </div>
                 </div>
             </div>
-            <div class="col-md-1 text-right">
-            </div>
-            <div class="col-md-3 text-right">
-                <form action="<?php echo site_url('produk/index'); ?>" class="form-inline" method="get">
-                    <div class="input-group">
-                        <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
-                        <span class="input-group-btn">
-                            <?php 
-                                if ($q <> '')
-                                {
-                                    ?>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <div class="card-tools">
+                    <form action="<?php echo site_url('produk'); ?>" class="form-inline" method="get">
+                        <div class="input-group">
+                            <input type="text" class="form-control" name="q" value="<?php echo $q; ?>">
+                            <span class="input-group-btn">
+                                <?php
+                                if ($q <> '') {
+                                ?>
                                     <a href="<?php echo site_url('produk'); ?>" class="btn btn-default">Reset</a>
-                                    <?php
+                                <?php
                                 }
-                            ?>
-                          <button class="btn btn-primary" type="submit">Search</button>
-                        </span>
-                    </div>
-                </form>
+                                ?>
+                                <button class="btn btn-primary" type="submit">Search</button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body table-responsive p-0">
+                <table class="table table-bordered dt-responsive nowrap">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Nama Produk</th>
+                            <th>Jenis</th>
+                            <th>Harga</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <?php
+                    foreach ($produk_data as $produk) {
+                    ?>
+                        <tr>
+                            <td width="80px"><?php echo ++$start ?></td>
+                            <td><?php echo $produk->nama_produk ?></td>
+                            <td><?php echo $produk->jenis ?></td>
+                            <td><?php echo $produk->harga ?></td>
+                            <td>
+                                <a href="<?= site_url('produk/update/' . $produk->id_produk); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
+                                <a href="<?= site_url('produk/delete/' . $produk->id_produk); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
+                            </td>
+                        </tr>
+                    <?php
+                    }
+                    ?>
+                </table>
             </div>
         </div>
-        <table class="table table-bordered" style="margin-bottom: 10px">
-            <tr>
-                <th>No</th>
-		<th>Nama Produk</th>
-		<th>Jenis</th>
-		<th>Harga</th>
-		<th>Action</th>
-            </tr><?php
-            foreach ($produk_data as $produk)
-            {
-                ?>
-                <tr>
-			<td width="80px"><?php echo ++$start ?></td>
-			<td><?php echo $produk->nama_produk ?></td>
-			<td><?php echo $produk->jenis ?></td>
-			<td><?php echo $produk->harga ?></td>
-			<td style="text-align:center" width="200px">
-				<?php 
-				echo anchor(site_url('produk/read/'.$produk->id_produk),'Read'); 
-				echo ' | '; 
-				echo anchor(site_url('produk/update/'.$produk->id_produk),'Update'); 
-				echo ' | '; 
-				echo anchor(site_url('produk/delete/'.$produk->id_produk),'Delete','onclick="javasciprt: return confirm(\'Are You Sure ?\')"'); 
-				?>
-			</td>
-		</tr>
-                <?php
-            }
-            ?>
-        </table>
-        <div class="row">
-            <div class="col-md-6">
-                <a href="#" class="btn btn-primary">Total Record : <?php echo $total_rows ?></a>
-	    </div>
-            <div class="col-md-6 text-right">
-                <?php echo $pagination ?>
-            </div>
+    </div>
+    <div class="row col-12">
+        <div class="col-md-6">
+            <a href="#" class="btn btn-primary">Jumlah Produk : <?php echo $total_rows ?></a>
         </div>
-    </body>
-</html>
+        <div class="col-md-6 text-right">
+            <?php echo $pagination ?>
+        </div>
+    </div>
+</div>
+</body>

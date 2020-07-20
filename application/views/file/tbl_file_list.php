@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="content-fluid">
-            <h2 style="margin-top:0px">File OPOP</h2>
+            <h2 style="margin-top:0px">File Pesantren</h2>
             <div style="margin-bottom: 10px">
                 <div class="col-12"><br><br>
                     <?php echo anchor(site_url('file/create'), 'Upload File', 'class="btn btn-primary"'); ?>

@@ -93,7 +93,7 @@ class Auth extends CI_Controller
                 'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
                 'email' => $this->input->post('email', true),
                 'password' => sha1($this->input->post('password1')),
-                'image' => $fotoprofil,
+                'gambar' => $fotoprofil,
                 'role' => $this->input->post('role')
             ];
 

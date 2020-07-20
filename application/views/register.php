@@ -79,6 +79,8 @@
                 </div>
                 <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="row">
+                    <div class="col-8">
+                    </div>
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>

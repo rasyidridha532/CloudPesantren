@@ -10,13 +10,18 @@ class Produk extends CI_Controller
         parent::__construct();
         $this->load->model('Produk_model');
         $this->load->library('form_validation');
+
+        $status = $this->session->userdata('status');
+        if (isset($status) != "login") {
+            redirect(base_url("auth"));
+        }
     }
 
     public function index()
     {
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
-        
+
         if ($q <> '') {
             $config['base_url'] = base_url() . 'produk/index.html?q=' . urlencode($q);
             $config['first_url'] = base_url() . 'produk/index.html?q=' . urlencode($q);
@@ -43,16 +48,16 @@ class Produk extends CI_Controller
         $this->load->view('produk/tbl_produk_list', $data);
     }
 
-    public function read($id) 
+    public function read($id)
     {
         $row = $this->Produk_model->get_by_id($id);
         if ($row) {
             $data = array(
-		'id_produk' => $row->id_produk,
-		'nama_produk' => $row->nama_produk,
-		'jenis' => $row->jenis,
-		'harga' => $row->harga,
-	    );
+                'id_produk' => $row->id_produk,
+                'nama_produk' => $row->nama_produk,
+                'jenis' => $row->jenis,
+                'harga' => $row->harga,
+            );
             $this->load->view('produk/tbl_produk_read', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
@@ -60,20 +65,20 @@ class Produk extends CI_Controller
         }
     }
 
-    public function create() 
+    public function create()
     {
         $data = array(
             'button' => 'Create',
             'action' => site_url('produk/create_action'),
-	    'id_produk' => set_value('id_produk'),
-	    'nama_produk' => set_value('nama_produk'),
-	    'jenis' => set_value('jenis'),
-	    'harga' => set_value('harga'),
-	);
+            'id_produk' => set_value('id_produk'),
+            'nama_produk' => set_value('nama_produk'),
+            'jenis' => set_value('jenis'),
+            'harga' => set_value('harga'),
+        );
         $this->load->view('produk/tbl_produk_form', $data);
     }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         $this->_rules();
 
@@ -81,18 +86,18 @@ class Produk extends CI_Controller
             $this->create();
         } else {
             $data = array(
-		'nama_produk' => $this->input->post('nama_produk',TRUE),
-		'jenis' => $this->input->post('jenis',TRUE),
-		'harga' => $this->input->post('harga',TRUE),
-	    );
+                'nama_produk' => $this->input->post('nama_produk', TRUE),
+                'jenis' => $this->input->post('jenis', TRUE),
+                'harga' => $this->input->post('harga', TRUE),
+            );
 
             $this->Produk_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
             redirect(site_url('produk'));
         }
     }
-    
-    public function update($id) 
+
+    public function update($id)
     {
         $row = $this->Produk_model->get_by_id($id);
 
@@ -100,19 +105,19 @@ class Produk extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('produk/update_action'),
-		'id_produk' => set_value('id_produk', $row->id_produk),
-		'nama_produk' => set_value('nama_produk', $row->nama_produk),
-		'jenis' => set_value('jenis', $row->jenis),
-		'harga' => set_value('harga', $row->harga),
-	    );
+                'id_produk' => set_value('id_produk', $row->id_produk),
+                'nama_produk' => set_value('nama_produk', $row->nama_produk),
+                'jenis' => set_value('jenis', $row->jenis),
+                'harga' => set_value('harga', $row->harga),
+            );
             $this->load->view('produk/tbl_produk_form', $data);
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
             redirect(site_url('produk'));
         }
     }
-    
-    public function update_action() 
+
+    public function update_action()
     {
         $this->_rules();
 
@@ -120,18 +125,18 @@ class Produk extends CI_Controller
             $this->update($this->input->post('id_produk', TRUE));
         } else {
             $data = array(
-		'nama_produk' => $this->input->post('nama_produk',TRUE),
-		'jenis' => $this->input->post('jenis',TRUE),
-		'harga' => $this->input->post('harga',TRUE),
-	    );
+                'nama_produk' => $this->input->post('nama_produk', TRUE),
+                'jenis' => $this->input->post('jenis', TRUE),
+                'harga' => $this->input->post('harga', TRUE),
+            );
 
             $this->Produk_model->update($this->input->post('id_produk', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
             redirect(site_url('produk'));
         }
     }
-    
-    public function delete($id) 
+
+    public function delete($id)
     {
         $row = $this->Produk_model->get_by_id($id);
 
@@ -145,16 +150,15 @@ class Produk extends CI_Controller
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {
-	$this->form_validation->set_rules('nama_produk', 'nama produk', 'trim|required');
-	$this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
-	$this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        $this->form_validation->set_rules('nama_produk', 'nama produk', 'trim|required');
+        $this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
+        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
 
-	$this->form_validation->set_rules('id_produk', 'id_produk', 'trim');
-	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
+        $this->form_validation->set_rules('id_produk', 'id_produk', 'trim');
+        $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
-
 }
 
 /* End of file Produk.php */

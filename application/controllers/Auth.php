@@ -52,7 +52,7 @@ class Auth extends CI_Controller
             $cek = $this->Users_model->cekLogin('tbl_users', $where)->row_array();
 
             $nama = $cek['nama'];
-            $gambar = $cek['image'];
+            $gambar = $cek['gambar'];
             if ($cek['role'] == 'admin') {
                 $role = 'Admin';
             } else {

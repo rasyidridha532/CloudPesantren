@@ -85,12 +85,12 @@ class Produk extends CI_Controller
         } else {
             $data = array(
                 'nama_produk' => $this->input->post('nama_produk', TRUE),
-                'jenis' => $this->input->post('jenis', TRUE),
+                'id_jenis' => $this->input->post('id_jenis', TRUE),
                 'harga' => $this->input->post('harga', TRUE),
             );
 
             $this->Produk_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Ditambah!</div>');
             redirect(site_url('produk'));
         }
     }
@@ -109,7 +109,7 @@ class Produk extends CI_Controller
                 'action' => site_url('produk/update_action'),
                 'id_produk' => set_value('id_produk', $row->id_produk),
                 'nama_produk' => set_value('nama_produk', $row->nama_produk),
-                'jenis' => set_value('jenis', $row->jenis),
+                'id_jenis' => set_value('id_jenis', $row->jenis),
                 'harga' => set_value('harga', $row->harga),
                 'foto' => $fotoprofil,
                 'nama' => $nama,
@@ -121,7 +121,7 @@ class Produk extends CI_Controller
             $this->load->view('produk/tbl_produk_form', $data);
             $this->load->view('template/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data tidak ditemukan!</div>');
             redirect(site_url('produk'));
         }
     }
@@ -135,12 +135,12 @@ class Produk extends CI_Controller
         } else {
             $data = array(
                 'nama_produk' => $this->input->post('nama_produk', TRUE),
-                'jenis' => $this->input->post('jenis', TRUE),
+                'id_jenis' => $this->input->post('id_jenis', TRUE),
                 'harga' => $this->input->post('harga', TRUE),
             );
 
             $this->Produk_model->update($this->input->post('id_produk', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Dirubah!</div>');
             redirect(site_url('produk'));
         }
     }
@@ -151,21 +151,25 @@ class Produk extends CI_Controller
 
         if ($row) {
             $this->Produk_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Dihapus</div>');
             redirect(site_url('produk'));
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Data tidak ditemukan!</div>');
             redirect(site_url('produk'));
         }
     }
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_produk', 'nama produk', 'required');
+        $this->form_validation->set_rules('nama_produk', 'nama produk', 'required', [
+            'required' => 'Nama Produk Wajib Diisi!'
+        ]);
         $this->form_validation->set_rules('id_jenis', 'id_jenis', 'required', [
             'required' => 'Jenis Produk Harus Dipilih!'
         ]);
-        $this->form_validation->set_rules('harga', 'harga', 'required');
+        $this->form_validation->set_rules('harga', 'harga', 'required', [
+            'required' => 'Harga Barang Wajib Diisi!'
+        ]);
 
         $this->form_validation->set_rules('id_produk', 'id_produk', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

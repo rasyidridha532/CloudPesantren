@@ -12,7 +12,6 @@
         </div>
     </div>
     <div class="container-fluid">
-        <!-- <form action="<?php echo $action; ?>" method="post" enctype="multipart/form-data"> -->
         <?= form_open_multipart($action) ?>
         <div class="form-group">
             <label for="varchar">Judul <?php echo form_error('judul') ?></label>

@@ -23,7 +23,7 @@
           </li>
           <li class="nav-item">
             <a href="<?= base_url('produk'); ?>" class="nav-link <?= $this->uri->segment(1) == 'produk' ? 'active' : '' ?>">
-              <i class="nav-icon fas fa-mosque"></i>
+              <i class="nav-icon fas fa-shopping-cart"></i>
               <p>
                 Data Produk
               </p>

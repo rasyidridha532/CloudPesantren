@@ -55,11 +55,6 @@
                 <?php echo form_error('password1', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Masukkan Kembali Password" name="password2">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
-                        </div>
-                    </div>
                 </div>
                 <?php echo form_error('password2', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="input-group mb-3">
@@ -68,25 +63,20 @@
                         <option value="admin">Administrator</option>
                         <option value="member">Pengelola</option>
                     </select>
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
-                        </div>
-                    </div>
                 </div>
                 <div class="input-group mb-3">
-                    <label for="myfile">Upload Foto Profil</label><br>
-                    <input type="file" name="gambar" class="form-control">
+                    <label for="myfile">Upload Foto Profil</label>
                 </div>
-                <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="row">
                     <div class="col-8">
+                        <input type="file" name="gambar" class="form-control">
                     </div>
                     <div class="col-4">
                         <button type="submit" class="btn btn-primary btn-block">Register</button>
                     </div>
                     <!-- /.col -->
                 </div>
+                <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
                 <?= form_close() ?>
             </div>
             <!-- /.form-box -->

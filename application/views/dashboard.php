@@ -30,7 +30,7 @@
             <div class="inner">
               <h3><?= $hitung_user; ?></h3>
 
-              <p>User yang terdaftar di sistem</p>
+              <p>User yang Terdaftar di Sistem</p>
             </div>
             <div class="icon">
               <i class="fa fa-users"></i>
@@ -45,7 +45,7 @@
             <div class="inner">
               <h3><?= $hitung_produk; ?></h3>
 
-              <p>Jumlah Produk</p>
+              <p>Jumlah Jenis Produk</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>

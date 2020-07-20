@@ -41,27 +41,44 @@ class File_model extends CI_Model
         return $this->db->count_all_results();
     }
 
+    function total_row_by_id($q = NULL, $id)
+    {
+        $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
+        $this->db->like('id_file', $q);
+        $this->db->or_like('judul', $q);
+        $this->db->or_like('nama_file', $q);
+        $this->db->or_like('size', $q);
+        $this->db->or_like('uploaded_at', $q);
+        $this->db->from($this->table);
+        $this->db->where('id_users', $id);
+        return $this->db->count_all_results();
+    }
+
     // get data with limit and search
     function get_limit_data($limit, $start = 0, $q = NULL)
     {
+        $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
+        $this->db->or_like('nama', $q);
         $this->db->or_like('size', $q);
         $this->db->or_like('uploaded_at', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
-    function get_limit_data_by_id($limit, $start = 0, $q = NULL)
+    function get_limit_data_by_id($limit, $start = 0, $q = NULL, $id)
     {
+        $this->db->join('tbl_users', 'tbl_file.id_file = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->like('id_file', $q);
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('size', $q);
         $this->db->or_like('uploaded_at', $q);
+        $this->db->where('id_users', $id);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

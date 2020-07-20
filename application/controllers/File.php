@@ -22,7 +22,6 @@ class File extends CI_Controller
         $fotoprofil = $this->session->userdata('gambar');
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
-        $id_user = $this->session->userdata('id');
 
         $q = urldecode($this->input->get('q', TRUE));
         $start = intval($this->input->get('start'));
@@ -31,25 +30,39 @@ class File extends CI_Controller
         $config['page_query_string'] = TRUE;
         $config['total_rows'] = $this->File_model->total_rows($q);
 
-        if ($role == 'Admin') {
-            $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
-        }
-
-
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
-        $data = array(
-            'file_data' => $file,
-            'q' => $q,
-            'pagination' => $this->pagination->create_links(),
-            'total_rows' => $config['total_rows'],
-            'start' => $start,
-            'foto' => $fotoprofil,
-            'nama' => $nama,
-            'role' => $role,
-            'title' => 'File'
-        );
+        if ($role == 'Admin') {
+            $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
+            $data = array(
+                'file_data' => $file,
+                'q' => $q,
+                'pagination' => $this->pagination->create_links(),
+                'total_rows' => $config['total_rows'],
+                'start' => $start,
+                'foto' => $fotoprofil,
+                'nama' => $nama,
+                'role' => $role,
+                'title' => 'File'
+            );
+        } else {
+            $id_user = $this->session->userdata('id');
+            $file = $this->File_model->get_limit_data_by_id($config['per_page'], $start, $q, $id_user);
+            $data = array(
+                'file_data' => $file,
+                'q' => $q,
+                'pagination' => $this->pagination->create_links(),
+                'total_rows' => $config['total_rows'],
+                'start' => $start,
+                'foto' => $fotoprofil,
+                'nama' => $nama,
+                'role' => $role,
+                'id_user' => $id_user,
+                'title' => 'File'
+            );
+        }
+
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
         $this->load->view('file/tbl_file_list', $data);
@@ -61,11 +74,13 @@ class File extends CI_Controller
         $fotoprofil = $this->session->userdata('gambar');
         $nama = $this->session->userdata('nama');
         $role = $this->session->userdata('role');
+        $id_user = $this->session->userdata('id');
 
         $data = array(
             'button' => 'Upload',
             'action' => site_url('file/create_action'),
             'id_file' => set_value('id_file'),
+            'id_user' => $id_user,
             'judul' => set_value('judul'),
             'foto' => $fotoprofil,
             'nama' => $nama,

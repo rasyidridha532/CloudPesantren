@@ -43,6 +43,9 @@
                             <th>Judul</th>
                             <th>Nama File</th>
                             <th>Ukuran File</th>
+                            <?php if ($role == 'Admin') { ?>
+                                <th>Uploader</th>
+                            <?php } ?>
                             <th>Tanggal Upload</th>
                             <th>Action</th>
                         </tr>
@@ -66,6 +69,9 @@
                                     echo round($size_file, 2) . ' MB';
                                 }
                                 ?></td>
+                            <?php if ($role == 'Admin') { ?>
+                                <td><?php echo $file->nama ?></td>
+                            <?php } ?>
                             <td><?php echo $newDate ?></td>
                             <td class="margin">
                                 <a href="<?= base_url('uploads/file/' . $file->nama_file); ?>" class="btn btn-block btn-primary btn-sm">Download</a>

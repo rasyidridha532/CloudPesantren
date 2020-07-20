@@ -22,6 +22,7 @@
             <input type="file" name="file" class="form-control">
         </div>
         <input type="hidden" name="id_file" value="<?php echo $id_file; ?>" />
+        <input type="hidden" name="id_user" value="<?php echo $id_user; ?>" />
         <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
         <a href="<?php echo site_url('file') ?>" class="btn btn-default">Cancel</a>
         <?= form_close() ?>

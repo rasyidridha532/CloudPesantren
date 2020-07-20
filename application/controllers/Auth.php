@@ -49,28 +49,30 @@ class Auth extends CI_Controller
                 'password' => sha1($password)
             );
 
-            $cek = $this->Users_model->cekLogin('tbl_users', $where)->row_array();
+            $cek = $this->Users_model->cekLogin($where)->row_array();
 
-            $nama = $cek['nama'];
-            $gambar = $cek['gambar'];
-            if ($cek['role'] == 'admin') {
-                $role = 'Admin';
-            } else {
-                $role = 'Anggota';
-            }
-
-            if (isset($cek)) {
-                $data_session = array(
-                    'role' => $role,
-                    'status' => 'login',
-                    'gambar' => $gambar,
-                    'nama' => $nama
-                );
-                $this->session->set_userdata($data_session);
-                redirect(base_url(""));
-            } else {
+            if (!$where['email'] == $cek['email'] && !$where['password'] == $cek['password']) {
                 $this->session->set_flashdata('messagelogin', '<div class="alert alert-warning">Email atau password salah!</div>');
-                redirect('auth');
+                redirect(site_url('auth/login'));
+            } else {
+                $nama = $cek['nama'];
+                $gambar = $cek['gambar'];
+                if ($cek['role'] == 'admin') {
+                    $role = 'Admin';
+                } else {
+                    $role = 'Anggota';
+                }
+
+                if (isset($cek)) {
+                    $data_session = array(
+                        'role' => $role,
+                        'status' => 'login',
+                        'gambar' => $gambar,
+                        'nama' => $nama
+                    );
+                    $this->session->set_userdata($data_session);
+                    redirect(base_url(""));
+                }
             }
         }
     }

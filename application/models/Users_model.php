@@ -15,9 +15,9 @@ class Users_model extends CI_Model
         parent::__construct();
     }
 
-    function cekLogin($table, $where)
+    function cekLogin($where)
     {
-        return $this->db->get_where($table, $where);
+        return $this->db->get_where($this->table, $where);
     }
 
     // get all

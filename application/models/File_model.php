@@ -48,7 +48,7 @@ class File_model extends CI_Model
 
     function total($id)
     {
-        $this->db->where($this->table, $id);
+        $this->db->where('id_user', $id);
         return $this->db->count_all_results();
     }
 

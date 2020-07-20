@@ -52,7 +52,7 @@
                         <tr>
                             <td width="80px"><?php echo ++$start ?></td>
                             <td><?php echo $produk->nama_produk ?></td>
-                            <td><?php echo $produk->jenis ?></td>
+                            <td><?php echo $produk->nama_jenis ?></td>
                             <td><?php echo $produk->harga ?></td>
                             <td>
                                 <a href="<?= site_url('produk/update/' . $produk->id_produk); ?>" class="btn btn-block btn-warning btn-sm">Update</a>

@@ -34,10 +34,8 @@ class Produk_model extends CI_Model
     function total_rows($q = NULL)
     {
         $this->db->join('tbl_jenis', 'tbl_produk.id_jenis = tbl_jenis.id_jenis');
-        $this->db->like('id_produk', $q);
-        $this->db->or_like('nama_produk', $q);
+        $this->db->like('nama_produk', $q);
         $this->db->or_like('nama_jenis', $q);
-        $this->db->or_like('harga', $q);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -47,10 +45,8 @@ class Produk_model extends CI_Model
     {
         $this->db->join('tbl_jenis', 'tbl_produk.id_jenis = tbl_jenis.id_jenis');
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('id_produk', $q);
-        $this->db->or_like('nama_produk', $q);
+        $this->db->like('nama_produk', $q);
         $this->db->or_like('nama_jenis', $q);
-        $this->db->or_like('harga', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

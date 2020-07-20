@@ -78,7 +78,7 @@ class File_model extends CI_Model
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('size', $q);
         $this->db->or_like('uploaded_at', $q);
-        $this->db->where('id_users', $id);
+        $this->db->where('id_user', $id);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

@@ -121,7 +121,7 @@ class Auth extends CI_Controller
 
         $this->load->library('upload', $config);
 
-        if (!$this->upload->do_upload('file')) {
+        if (!$this->upload->do_upload('gambar')) {
             $this->session->set_flashdata('message', $this->upload->display_errors());
         } else {
             $fileData = $this->upload->data();

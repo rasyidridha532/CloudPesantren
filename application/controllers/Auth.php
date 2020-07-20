@@ -121,14 +121,15 @@ class Auth extends CI_Controller
         $config['upload_path'] = './uploads/fotoprofil/';
         $config['allowed_types'] = 'jpg|png|jpeg';
         $config['max_size'] = 0;
-        $config['max_height'] = 200;
-        $config['max_width'] = 200;
+        $config['max_height'] = 600;
+        $config['max_width'] = 600;
         $config['file_name'] = 'Pesantren-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
             $this->session->set_flashdata('message', $this->upload->display_errors());
+            redirect('auth/register');
         } else {
             $fileData = $this->upload->data();
             $uploadfoto['nama_gambar'] = $fileData['file_name'];

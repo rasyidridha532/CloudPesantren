@@ -24,6 +24,7 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
+                <?php echo $this->session->userdata('message') <> '' ? $this->session->userdata('message') : ''; ?>
                 <?= form_open_multipart('auth/proses_register') ?>
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" placeholder="Nama Lengkap" name="namalengkap" value="<?= set_value('namalengkap'); ?>">

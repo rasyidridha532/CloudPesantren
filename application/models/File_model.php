@@ -69,7 +69,7 @@ class File_model extends CI_Model
     function get_limit_data_by_id($limit, $start = 0, $q = NULL, $id)
     {
         $this->db->select('id_file,judul,nama_file,size,uploaded_at,id_user');
-        // $this->db->order_by($this->id, $this->order);
+        $this->db->order_by($this->id, $this->order);
         // $this->db->like('id_file', $q);
         // $this->db->or_like('judul', $q);
         // $this->db->or_like('nama_file', $q);

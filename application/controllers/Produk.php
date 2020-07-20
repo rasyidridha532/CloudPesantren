@@ -30,12 +30,20 @@ class Produk extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $data = array(
             'produk_data' => $produk,
             'q' => $q,
             'pagination' => $this->pagination->create_links(),
             'total_rows' => $config['total_rows'],
             'start' => $start,
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'Produk'
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
@@ -45,6 +53,10 @@ class Produk extends CI_Controller
 
     public function create()
     {
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         $data = array(
             'button' => 'Create',
             'action' => site_url('produk/create_action'),
@@ -53,6 +65,10 @@ class Produk extends CI_Controller
             'nama_produk' => set_value('nama_produk'),
             'id_jenis' => set_value('id_jenis'),
             'harga' => set_value('harga'),
+            'foto' => $fotoprofil,
+            'nama' => $nama,
+            'role' => $role,
+            'title' => 'Tambah Produk'
         );
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');
@@ -83,6 +99,10 @@ class Produk extends CI_Controller
     {
         $row = $this->Produk_model->get_by_id($id);
 
+        $fotoprofil = $this->session->userdata('gambar');
+        $nama = $this->session->userdata('nama');
+        $role = $this->session->userdata('role');
+
         if ($row) {
             $data = array(
                 'button' => 'Update',
@@ -91,6 +111,10 @@ class Produk extends CI_Controller
                 'nama_produk' => set_value('nama_produk', $row->nama_produk),
                 'jenis' => set_value('jenis', $row->jenis),
                 'harga' => set_value('harga', $row->harga),
+                'foto' => $fotoprofil,
+                'nama' => $nama,
+                'role' => $role,
+                'title' => 'Update Produk'
             );
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');

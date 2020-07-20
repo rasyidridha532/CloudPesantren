@@ -61,7 +61,7 @@
                     <select class="form-control" name="role" id="role" required>
                         <option value="">--Pilih Role--</option>
                         <option value="admin">Administrator</option>
-                        <option value="member">Pengelola</option>
+                        <option value="pengurus">Pengelola</option>
                     </select>
                 </div>
                 <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>

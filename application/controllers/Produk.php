@@ -78,7 +78,7 @@ class Produk extends CI_Controller
 
     public function create_action()
     {
-        // $this->_rules();
+        $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
             $this->create();
@@ -162,7 +162,7 @@ class Produk extends CI_Controller
     public function _rules()
     {
         $this->form_validation->set_rules('nama_produk', 'nama produk', 'required');
-        $this->form_validation->set_rules('jenis', 'jenis', 'required', [
+        $this->form_validation->set_rules('id_jenis', 'id_jenis', 'required', [
             'required' => 'Jenis Produk Harus Dipilih!'
         ]);
         $this->form_validation->set_rules('harga', 'harga', 'required');

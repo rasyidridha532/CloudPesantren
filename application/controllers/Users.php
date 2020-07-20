@@ -159,10 +159,11 @@ class Users extends CI_Controller
             'min_length' => 'Password terlalu pendek!'
         ]);
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
+            'required' => 'Password Harus diisi!',
             'matches' => 'Password tidak sama!'
         ]);
 
-        $this->form_validation->set_rules('role', 'role', 'trim|required' . [
+        $this->form_validation->set_rules('role', 'role', 'trim|required', [
             'required' => 'Pilih Role Terlebih Dahulu'
         ]);
 

@@ -1,7 +1,7 @@
 <div class="content-wrapper">
     <div class="content-header">
         <div class="content-fluid">
-            <h2 style="margin-top:0px col-8">Tambah Pesantren</h2>
+            <h2 style="margin-top:0px col-8">Edit User</h2>
             <div style="margin-bottom: 10px">
                 <div class="col-md-4 text-center">
                     <div style="margin-top: 8px" id="message alert alert-success">
@@ -30,7 +30,6 @@
                 <input type="password" class="form-control" placeholder="Password" name="password2">
             </div>
             <div class="form-group">
-                <label for="varchar">Gambar<?php echo form_error('gambar') ?></label>
                 <input type="file" name="gambar" class="form-control">
             </div>
             <div class="form-group">

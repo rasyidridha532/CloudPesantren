@@ -133,6 +133,7 @@ class File extends CI_Controller
             $size = $file_spec['size'];
             $data = array(
                 'judul' => $this->input->post('judul', TRUE),
+                'id_user' => $this->input->post('id_user', TRUE),
                 'nama_file' => $nama_file,
                 'size' => $size
             );

@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?= $title; ?> | OPOP</title>
+  <title><?= $title; ?> | Pesantren</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -55,13 +55,13 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown user-menu">
           <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
-            <img src="<?php echo base_url(); ?>uploads/fotoprofil/<?= $gambar; ?>" class="user-image img-circle elevation-2" alt="User Image">
+            <img src="<?php echo base_url(); ?>uploads/fotoprofil/<?= $foto; ?>" class="user-image img-circle elevation-2" alt="User Image">
             <span class="d-none d-md-inline">Selamat datang, <?= $nama; ?>!</span>
           </a>
           <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-gradient-gray">
-              <img src="<?php echo base_url(); ?>uploads/fotoprofil/<?= $gambar; ?>" class="img-circle elevation-2" alt="User Image">
+              <img src="<?php echo base_url(); ?>uploads/fotoprofil/<?= $foto; ?>" class="img-circle elevation-2" alt="User Image">
 
               <p>
                 <?= $nama; ?>

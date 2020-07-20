@@ -161,9 +161,11 @@ class Produk extends CI_Controller
 
     public function _rules()
     {
-        $this->form_validation->set_rules('nama_produk', 'nama produk', 'trim|required');
-        $this->form_validation->set_rules('jenis', 'jenis', 'trim|required');
-        $this->form_validation->set_rules('harga', 'harga', 'trim|required');
+        $this->form_validation->set_rules('nama_produk', 'nama produk', 'required');
+        $this->form_validation->set_rules('jenis', 'jenis', 'required', [
+            'required' => 'Jenis Produk Harus Dipilih!'
+        ]);
+        $this->form_validation->set_rules('harga', 'harga', 'required');
 
         $this->form_validation->set_rules('id_produk', 'id_produk', 'trim');
         $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

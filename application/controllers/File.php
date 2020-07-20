@@ -122,7 +122,7 @@ class File extends CI_Controller
             $this->load->view('file/tbl_file_form', $data);
             $this->load->view('template/footer');
         } else {
-            $this->session->set_flashdata('message', 'Record Not Found');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Record Not Found</div>');
             redirect(site_url('file'));
         }
     }
@@ -170,9 +170,9 @@ class File extends CI_Controller
                 'size' => $size
             );
 
-            unlink('./uploads/file/opop/' . $old_file);
+            unlink('./uploads/file/' . $old_file);
             $this->File_model->update($this->input->post('id_file', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Berhasil Merubah File</div>');
             redirect(site_url('file'));
         }
     }

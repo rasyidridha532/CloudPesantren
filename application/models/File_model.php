@@ -52,7 +52,6 @@ class File_model extends CI_Model
         $this->db->join('tbl_users', 'tbl_file.id_user = tbl_users.id');
         $this->db->order_by($this->id, $this->order);
         $this->db->or_like('judul', $q);
-        $this->db->or_like('nama', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }

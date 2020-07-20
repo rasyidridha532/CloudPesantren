@@ -36,7 +36,6 @@ class File_model extends CI_Model
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('size', $q);
-        $this->db->or_like('uploaded_at', $q);
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -48,7 +47,6 @@ class File_model extends CI_Model
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('size', $q);
-        $this->db->or_like('uploaded_at', $q);
         $this->db->from($this->table);
         $this->db->where('id_user', $id);
         return $this->db->count_all_results();
@@ -64,7 +62,6 @@ class File_model extends CI_Model
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('nama', $q);
         $this->db->or_like('size', $q);
-        $this->db->or_like('uploaded_at', $q);
         $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
@@ -77,9 +74,8 @@ class File_model extends CI_Model
         $this->db->or_like('judul', $q);
         $this->db->or_like('nama_file', $q);
         $this->db->or_like('size', $q);
-        $this->db->or_like('uploaded_at', $q);
-        $this->db->where('id_user', $id);
         $this->db->limit($limit, $start);
+        $this->db->where('id_user', $id);
         return $this->db->get($this->table)->result();
     }
 

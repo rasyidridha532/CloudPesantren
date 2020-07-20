@@ -54,7 +54,7 @@ class File extends CI_Controller
         } else {
             $id_user = $this->session->userdata('id');
             $file = $this->File_model->get_limit_data_by_id($config['per_page'], $start, $q, $id_user);
-            print_r($id_user);
+            print_r($file);
             die();
             // $data = array(
             //     'file_data' => $file,

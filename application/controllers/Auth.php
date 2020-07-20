@@ -53,7 +53,7 @@ class Auth extends CI_Controller
 
             $nama = $cek['nama'];
             $gambar = $cek['image'];
-            if ($cek['id_role'] == 1) {
+            if ($cek['role'] == 'admin') {
                 $role = 'Admin';
             } else {
                 $role = 'Anggota';
@@ -77,6 +77,64 @@ class Auth extends CI_Controller
 
     public function register()
     {
+        $this->load->view('register');
+    }
+
+    public function proses_register()
+    {
+        $this->_rules();
+
+        if ($this->form_validation->run() == FALSE) {
+            $this->register();
+        } else {
+            $fotoprofil = $this->_upload_foto();
+
+            $data = [
+                'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
+                'email' => $this->input->post('email', true),
+                'password' => sha1($this->input->post('password1')),
+                'image' => $fotoprofil,
+                'role' => $this->input->post('role')
+            ];
+
+            $this->db->insert('tbl_users', $data);
+            $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
+            redirect('auth');
+        }
+    }
+
+    public function logout()
+    {
+        $this->session->sess_destroy();
+        $this->session->set_flashdata('message', '<div class="alert alert-success">Anda sudah log out!</div>');
+        redirect('auth');
+    }
+
+    private function _upload_foto()
+    {
+        $config['upload_path'] = './uploads/file/fotoprofil/';
+        $config['allowed_types'] = 'jpg|png|jpeg';
+        $config['max_size'] = 0;
+        $config['max_height'] = 200;
+        $config['max_width'] = 200;
+        $config['file_name'] = 'Pesantren-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('file')) {
+            $this->session->set_flashdata('message', $this->upload->display_errors());
+        } else {
+            $fileData = $this->upload->data();
+            $uploadfoto = $fileData['file_name'];
+        }
+
+        if (!empty($uploadfoto)) {
+            return $uploadfoto;
+        }
+    }
+
+    private function _rules()
+    {
         $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required|trim', [
             'required' => 'Nama Lengkap Harus Diisi!'
         ]);
@@ -92,33 +150,5 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]', [
             'matches' => 'Password tidak sama!'
         ]);
-
-        if ($this->form_validation->run() == false) {
-            $this->load->view('register');
-        } else {
-            $this->proses_register();
-        }
-    }
-
-    public function proses_register()
-    {
-        $data = [
-            'nama' => htmlspecialchars($this->input->post('namalengkap', true)),
-            'email' => $this->input->post('email', true),
-            'password' => sha1($this->input->post('password1')),
-            'image' => 'avatar5.png',
-            'role' => 2
-        ];
-
-        $this->db->insert('tbl_users', $data);
-        $this->session->set_flashdata('message', '<div class="alert alert-success">Selamat! Akun anda sudah dibuat. Silahkan Login!</div>');
-        redirect('auth');
-    }
-
-    public function logout()
-    {
-        $this->session->sess_destroy();
-        $this->session->set_flashdata('message', '<div class="alert alert-success">Anda sudah log out!</div>');
-        redirect('auth');
     }
 }

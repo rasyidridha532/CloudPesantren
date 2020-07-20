@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>OPOP | Registration Page</title>
+    <title>Pesantren | Registration Page</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -24,73 +24,76 @@
         <div class="card">
             <div class="card-body register-card-body">
                 <p class="login-box-msg">Register a new membership</p>
-                <form action="<?php echo base_url('auth/register'); ?>" method="post">
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Nama Lengkap" name="namalengkap" value="<?= set_value('namalengkap'); ?>">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-user"></span>
-                            </div>
+                <?= form_open_multipart('auth/register') ?>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Nama Lengkap" name="namalengkap" value="<?= set_value('namalengkap'); ?>">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    <?php echo form_error('namalengkap', '<small class="text-danger mt-6">', '</small>'); ?>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="Email" name="email" value="<?= set_value('email'); ?>">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-envelope"></span>
-                            </div>
+                </div>
+                <?php echo form_error('namalengkap', '<small class="text-danger mt-6">', '</small>'); ?>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Email" name="email" value="<?= set_value('email'); ?>">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-envelope"></span>
                         </div>
                     </div>
-                    <?php echo form_error('email', '<small class="text-danger mt-6">', '</small>'); ?>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Password" name="password1">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                </div>
+                <?php echo form_error('email', '<small class="text-danger mt-6">', '</small>'); ?>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Password" name="password1">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
                         </div>
                     </div>
-                    <?php echo form_error('password1', '<small class="text-danger mt-6">', '</small>'); ?>
-                    <div class="input-group mb-3">
-                        <input type="password" class="form-control" placeholder="Masukkan Kembali Password" name="password2">
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                </div>
+                <?php echo form_error('password1', '<small class="text-danger mt-6">', '</small>'); ?>
+                <div class="input-group mb-3">
+                    <input type="password" class="form-control" placeholder="Masukkan Kembali Password" name="password2">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
                         </div>
                     </div>
-                    <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
-                    <div class="input-group mb-3">
-                        <label for="varchar">Role</label>
-                        <select class="form-control" name="role" id="role" required>
-                            <option value="">--Pilih Role--</option>
-                            <option value="admin">Administrator</option>
-                            <option value="member">Pengelola</option>
-                        </select>
-                        <div class="input-group-append">
-                            <div class="input-group-text">
-                                <span class="fas fa-lock"></span>
-                            </div>
+                </div>
+                <?php echo form_error('password2', '<small class="text-danger mt-6">', '</small>'); ?>
+                <div class="input-group mb-3">
+                    <select class="form-control" name="role" id="role" required>
+                        <option value="">--Pilih Role--</option>
+                        <option value="admin">Administrator</option>
+                        <option value="member">Pengelola</option>
+                    </select>
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-user"></span>
                         </div>
                     </div>
-                    <?php echo form_error('password2', '<small class="text-danger mt-6">', '</small>'); ?>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-primary">
-                                <input type="checkbox" id="agreeTerms" name="terms" value="agree">
-                                <label for="agreeTerms">
-                                    I agree to the <a href="#">terms</a>
-                                </label>
-                            </div>
+                </div>
+                <div class="input-group mb-3">
+                    <label for="myfile">Upload Foto Profil</label>
+                    <input type="file" name="gambar" class="form-control">
+                </div>
+                <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
+                <div class="row">
+                    <div class="col-8">
+                        <div class="icheck-primary">
+                            <input type="checkbox" id="agreeTerms" name="terms" value="agree">
+                            <label for="agreeTerms">
+                                I agree to the <a href="#">terms</a>
+                            </label>
                         </div>
-                        <!-- /.col -->
-                        <div class="col-4">
-                            <button type="submit" class="btn btn-primary btn-block">Register</button>
-                        </div>
-                        <!-- /.col -->
                     </div>
-                </form>
+                    <!-- /.col -->
+                    <div class="col-4">
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <?= form_close() ?>
             </div>
             <!-- /.form-box -->
         </div><!-- /.card -->
@@ -103,7 +106,6 @@
     <script src="<?php echo base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?php echo base_url(); ?>assets/dist/js/adminlte.min.js"></script>
-
 </body>
 
 </html>

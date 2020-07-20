@@ -157,7 +157,7 @@ class Auth extends CI_Controller
             'matches' => 'Password tidak sama!'
         ]);
 
-        $this->form_validation->set_rules('role', 'role', 'trim|required' . [
+        $this->form_validation->set_rules('role', 'role', 'required' . [
             'required' => 'Pilih Role Terlebih Dahulu'
         ]);
     }

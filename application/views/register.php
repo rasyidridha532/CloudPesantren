@@ -77,7 +77,6 @@
                     </div>
                     <!-- /.col -->
                 </div>
-                <?php echo form_error('role', '<small class="text-danger mt-6">', '</small>'); ?>
                 <?= form_close() ?>
             </div>
             <!-- /.form-box -->

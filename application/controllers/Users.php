@@ -54,8 +54,8 @@ class Users extends CI_Controller
     public function update($id)
     {
         $fotoprofil = $this->session->userdata('gambar');
-        $nama = $this->session->userdata('nama');
-        $role = $this->session->userdata('role');
+        $nama_session = $this->session->userdata('nama');
+        $role_session = $this->session->userdata('role');
 
         $row = $this->Users_model->get_by_id($id);
 
@@ -63,8 +63,8 @@ class Users extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'foto' => $fotoprofil,
-                'nama' => $nama,
-                'role' => $role,
+                'nama' => $nama_session,
+                'role' => $role_session,
                 'action' => site_url('users/update_action'),
                 'id' => set_value('id', $row->id),
                 'nama' => set_value('nama', $row->nama),

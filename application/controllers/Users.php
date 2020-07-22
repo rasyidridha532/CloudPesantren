@@ -68,6 +68,7 @@ class Users extends CI_Controller
                 'action' => site_url('users/update_action'),
                 'id' => set_value('id', $row->id),
                 'nama' => set_value('nama', $row->nama),
+                'title' => 'Ubah User',
                 'email' => set_value('email', $row->email),
                 'role' => set_value('role', $row->role)
             );

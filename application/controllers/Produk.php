@@ -107,6 +107,7 @@ class Produk extends CI_Controller
             $data = array(
                 'button' => 'Update',
                 'action' => site_url('produk/update_action'),
+                'jenis' => $this->Produk_model->get_jenis()->result(),
                 'id_produk' => set_value('id_produk', $row->id_produk),
                 'nama_produk' => set_value('nama_produk', $row->nama_produk),
                 'id_jenis' => set_value('id_jenis', $row->jenis),

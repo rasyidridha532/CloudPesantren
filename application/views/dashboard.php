@@ -47,7 +47,7 @@
             <div class="inner">
               <h3><?= $hitung_produk; ?></h3>
 
-              <p>Jumlah Jenis Produk</p>
+              <p>Jumlah Produk</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>

@@ -110,7 +110,7 @@ class Produk extends CI_Controller
                 'jenis' => $this->Produk_model->get_jenis()->result(),
                 'id_produk' => set_value('id_produk', $row->id_produk),
                 'nama_produk' => set_value('nama_produk', $row->nama_produk),
-                'id_jenis' => set_value('id_jenis', $row->jenis),
+                'id_jenis' => set_value('id_jenis', $row->id_jenis),
                 'harga' => set_value('harga', $row->harga),
                 'foto' => $fotoprofil,
                 'nama' => $nama,

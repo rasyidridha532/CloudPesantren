@@ -33,8 +33,8 @@
                 <label for="varchar">Role<?php echo form_error('role') ?></label>
                 <select class="form-control" name="role" id="role" required>
                     <option value="">--Pilih Role--</option>
-                    <option value="admin">Administrator</option>
-                    <option value="member">Pengelola</option>
+                    <option value="Admin">Administrator</option>
+                    <option value="Pengurus">Pengelola</option>
                 </select>
             </div>
             <input type="hidden" name="id" value="<?php echo $id; ?>" />

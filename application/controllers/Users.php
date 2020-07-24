@@ -89,14 +89,14 @@ class Users extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->update($this->input->post('id', TRUE));
         } else {
-            $fotoprofil = $this->_upload_foto();
-            $namagambar = $fotoprofil['nama_gambar'];
+            // $fotoprofil = $this->_upload_foto();
+            // $namagambar = $fotoprofil['nama_gambar'];
 
             $data = array(
                 'nama' => $this->input->post('nama', TRUE),
                 'email' => $this->input->post('email', TRUE),
                 'password' => sha1($this->input->post('password1')),
-                'gambar' => $namagambar,
+                // 'gambar' => $namagambar,
                 'role' => $this->input->post('role', TRUE),
             );
 
@@ -135,7 +135,7 @@ class Users extends CI_Controller
 
         if (!$this->upload->do_upload('gambar')) {
             $this->session->set_flashdata('message', $this->upload->display_errors());
-            redirect('auth/register');
+            redirect('users/up');
         } else {
             $fileData = $this->upload->data();
             $uploadfoto['nama_gambar'] = $fileData['file_name'];

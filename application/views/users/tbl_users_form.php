@@ -30,10 +30,6 @@
                 <input type="password" class="form-control" placeholder="Password" name="password2">
             </div>
             <div class="form-group">
-                <label for="gambar">Upload Gambar</label>
-                <input type="file" name="gambar" class="form-control">
-            </div>
-            <div class="form-group">
                 <label for="varchar">Role<?php echo form_error('role') ?></label>
                 <select class="form-control" name="role" id="role" required>
                     <option value="">--Pilih Role--</option>

@@ -113,6 +113,7 @@ class File extends CI_Controller
                 'nama' => $nama,
                 'role' => $role,
                 'action' => site_url('file/update_action' . $row->id_file),
+                'title' => 'Upload File',
                 'id_file' => set_value('id_file', $row->id_file),
                 'id_user' => set_value('id_user', $row->id_user),
                 'judul' => set_value('judul', $row->judul),

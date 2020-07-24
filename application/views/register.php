@@ -55,6 +55,11 @@
                 <?php echo form_error('password1', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="input-group mb-3">
                     <input type="password" class="form-control" placeholder="Masukkan Kembali Password" name="password2">
+                    <div class="input-group-append">
+                        <div class="input-group-text">
+                            <span class="fas fa-lock"></span>
+                        </div>
+                    </div>
                 </div>
                 <?php echo form_error('password2', '<small class="text-danger mt-6">', '</small>'); ?>
                 <div class="input-group mb-3">
@@ -63,6 +68,8 @@
                         <option value="Admin">Administrator</option>
                         <option value="Pengurus">Pengelola</option>
                     </select>
+                    <div class="input-group-append">
+                    </div>
                 </div>
                 <div class="input-group mb-3">
                     <label for="myfile">Upload Foto Profil</label>

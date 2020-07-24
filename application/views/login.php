@@ -63,7 +63,7 @@
 
           <div class="row">
             <div class="col-8">
-              <a href="<?php echo base_url('auth/register'); ?>" class="btn btn-block btn-primary btn-sm">Register</a>
+              <a href="<?php echo base_url('auth/register'); ?>" class="btn btn-info btn-block">Register</a>
             </div>
             <div class="col-xs-4 pl-3">
               <button type="submit" class="btn btn-primary btn-block">Sign In</button>

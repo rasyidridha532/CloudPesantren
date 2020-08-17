@@ -28,6 +28,10 @@
                 </select>
             </div>
             <div class="form-group">
+                <label for="int">Stok <?php echo form_error('harga') ?></label>
+                <input type="number" class="form-control" name="stok" id="stok" placeholder="Jumlah Stok" value="<?php echo $stok; ?>" />
+            </div>
+            <div class="form-group">
                 <label for="int">Harga <?php echo form_error('harga') ?></label>
                 <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" value="<?php echo $harga; ?>" />
             </div>

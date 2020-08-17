@@ -64,6 +64,7 @@ class Produk extends CI_Controller
             'id_produk' => set_value('id_produk'),
             'nama_produk' => set_value('nama_produk'),
             'id_jenis' => set_value('id_jenis'),
+            'stok' => set_value('stok'),
             'harga' => set_value('harga'),
             'foto' => $fotoprofil,
             'nama' => $nama,
@@ -86,6 +87,7 @@ class Produk extends CI_Controller
             $data = array(
                 'nama_produk' => $this->input->post('nama_produk', TRUE),
                 'id_jenis' => $this->input->post('id_jenis', TRUE),
+                'stok' => $this->input->post('stok', TRUE),
                 'harga' => $this->input->post('harga', TRUE),
             );
 
@@ -111,6 +113,7 @@ class Produk extends CI_Controller
                 'id_produk' => set_value('id_produk', $row->id_produk),
                 'nama_produk' => set_value('nama_produk', $row->nama_produk),
                 'id_jenis' => set_value('id_jenis', $row->id_jenis),
+                'stok' => set_value('stok', $row->stok),
                 'harga' => set_value('harga', $row->harga),
                 'foto' => $fotoprofil,
                 'nama' => $nama,
@@ -137,6 +140,7 @@ class Produk extends CI_Controller
             $data = array(
                 'nama_produk' => $this->input->post('nama_produk', TRUE),
                 'id_jenis' => $this->input->post('id_jenis', TRUE),
+                'stok' => $this->input->post('stok', TRUE),
                 'harga' => $this->input->post('harga', TRUE),
             );
 
@@ -170,6 +174,9 @@ class Produk extends CI_Controller
         ]);
         $this->form_validation->set_rules('harga', 'harga', 'required', [
             'required' => 'Harga Barang Wajib Diisi!'
+        ]);
+        $this->form_validation->set_rules('stok', 'stok', 'required', [
+            'required' => 'Stok Barang Harus Diisi!'
         ]);
 
         $this->form_validation->set_rules('id_produk', 'id_produk', 'trim');

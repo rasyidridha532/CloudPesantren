@@ -33,45 +33,23 @@ class File extends CI_Controller
         $this->load->library('pagination');
         $this->pagination->initialize($config);
 
-        if ($role == 'Admin') {
-            $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
-            $data = array(
-                'file_data' => $file,
-                'q' => $q,
-                'pagination' => $this->pagination->create_links(),
-                'total_rows' => $config['total_rows'],
-                'start' => $start,
-                'foto' => $fotoprofil,
-                'nama' => $namasession,
-                'role' => $role,
-                'title' => 'File'
-            );
+        $file = $this->File_model->get_limit_data($config['per_page'], $start, $q);
+        $data = array(
+            'file_data' => $file,
+            'q' => $q,
+            'pagination' => $this->pagination->create_links(),
+            'total_rows' => $config['total_rows'],
+            'start' => $start,
+            'foto' => $fotoprofil,
+            'nama' => $namasession,
+            'role' => $role,
+            'title' => 'File'
+        );
 
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar');
-            $this->load->view('file/tbl_file_list', $data);
-            $this->load->view('template/footer');
-        } else {
-            $id_user = $this->session->userdata('id');
-            $file = $this->File_model->get_limit_data_by_id($config['per_page'], $start, $q, $id_user);
-            $data = array(
-                'file_data' => $file,
-                'q' => $q,
-                'pagination' => $this->pagination->create_links(),
-                'total_rows' => $config['total_rows'],
-                'start' => $start,
-                'foto' => $fotoprofil,
-                'nama' => $namasession,
-                'role' => $role,
-                'id_user' => $id_user,
-                'title' => 'File'
-            );
-
-            $this->load->view('template/header', $data);
-            $this->load->view('template/sidebar');
-            $this->load->view('file/tbl_file_list', $data);
-            $this->load->view('template/footer');
-        }
+        $this->load->view('template/header', $data);
+        $this->load->view('template/sidebar');
+        $this->load->view('file/tbl_file_list', $data);
+        $this->load->view('template/footer');
     }
 
     public function create()

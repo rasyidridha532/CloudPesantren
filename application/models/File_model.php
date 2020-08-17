@@ -63,15 +63,6 @@ class File_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
-    function get_limit_data_by_id($limit, $start = 0, $q = NULL, $id)
-    {
-        $this->db->select('id_file,judul,nama_file,size,uploaded_at,id_user');
-        $this->db->order_by($this->id, $this->order);
-        $this->db->like('judul', $q);
-        $this->db->limit($limit, $start);
-        return $this->db->get_where($this->table, array('id_user' => $id))->result();
-    }
-
     // insert data
     function insert($data)
     {

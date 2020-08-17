@@ -35,20 +35,16 @@ class Dashboard extends CI_Controller
 		$fotoprofil = $this->session->userdata('gambar');
 		$nama = $this->session->userdata('nama');
 		$role = $this->session->userdata('role');
-		$id_user = $this->session->userdata('id');
 
 		$hitung_semua_user = $this->db->count_all('tbl_users');
 		$hitung_semua_produk = $this->db->count_all('tbl_produk');
-		if ($role == 'Admin') {
-			$hitung_semua_file = $this->db->count_all('tbl_file');
-		} else {
-			$this->load->model('File_model');
-			$hitung_semua_file = $this->File_model->total($id_user);
-		}
+		$hitung_semua_file = $this->db->count_all('tbl_file');
+		$hitung_stok = $this->Produk_Model->get_stok();
 
 		$user['hitung_user'] = $hitung_semua_user;
 		$user['hitung_produk'] = $hitung_semua_produk;
 		$user['hitung_file'] = $hitung_semua_file;
+		$user['hitung_stok'] = $hitung_stok;
 
 
 		$data = array(

@@ -45,9 +45,9 @@
           <!-- small box -->
           <div class="small-box bg-green">
             <div class="inner">
-              <h3><?= $hitung_produk; ?></h3>
+              <h3><?= $hitung_stok; ?></h3>
 
-              <p>Jumlah Produk</p>
+              <p>Jumlah Stok Barang</p>
             </div>
             <div class="icon">
               <i class="fa fa-shopping-cart"></i>
@@ -60,13 +60,7 @@
           <div class="small-box bg-blue">
             <div class="inner">
               <h3><?= $hitung_file; ?></h3>
-              <?php if ($role == 'Admin') { ?>
-                <p>Jumlah File di Server</p>
-              <?php } else { ?>
-                <p>Jumlah File yang diupload</p>
-              <?php }
-              ?>
-
+              <p>Jumlah File di Server</p>
             </div>
             <div class="icon">
               <i class="fa fa-file"></i>

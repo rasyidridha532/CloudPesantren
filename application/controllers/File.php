@@ -161,7 +161,8 @@ class File extends CI_Controller
         $row = $this->File_model->get_by_id($id);
 
         if ($row) {
-            $this->File_model->delete($id);
+            unlink('./uploads/file/' . $row->nama_file);
+	    $this->File_model->delete($id);
             $this->session->set_flashdata('message', '<div class="alert alert-success">File Berhasil Dihapus!</div>');
             redirect(site_url('file'));
         } else {

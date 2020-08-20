@@ -56,7 +56,10 @@ class Produk_model extends CI_Model
         $this->db->select('stok');
         $query = $this->db->get('tbl_produk');
 
-        return $query;
+	if($query->num_rows() > 0) {
+		return $query->row()->stok;
+	}
+        return false;
     }
 
     // insert data

@@ -39,7 +39,13 @@ class Dashboard extends CI_Controller
 		$hitung_semua_user = $this->db->count_all('tbl_users');
 		$hitung_semua_produk = $this->db->count_all('tbl_produk');
 		$hitung_semua_file = $this->db->count_all('tbl_file');
-		$hitung_stok = $this->Produk_Model->get_stok();
+
+		$this->load->model('Produk_model');
+		$hitung_stok = $this->Produk_model->get_stok();
+
+		if ($hitung_stok == 0) {
+			$hitung_stok = 'Stok Kosong';
+		}
 
 		$user['hitung_user'] = $hitung_semua_user;
 		$user['hitung_produk'] = $hitung_semua_produk;

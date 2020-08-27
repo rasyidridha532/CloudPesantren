@@ -88,12 +88,14 @@
                 <div class="col-lg-4 col-sm-6 mb-4"></div>
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
-                        <img class="img-fluid" src="<?= base_url(); ?>uploads/file/<?= $produk->gambar ?>" alt="" />
-                        <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading"><?= $produk->nama_produk ?></div>
-                            <div class="portfolio-caption-subheading text-muted">Harga Rp<?= $produk->harga ?></div>
-                            <div class="portfolio-caption-subheading text-muted">Stok <?= $produk->stok ?></div>
-                        </div>
+                        <?php foreach ($produk_data as $produk) { ?>
+                            <img class="img-fluid" src="<?= base_url(); ?>uploads/file/<?= $produk->gambar ?>" alt="" />
+                            <div class="portfolio-caption">
+                                <div class="portfolio-caption-heading"><?= $produk->nama_produk ?></div>
+                                <div class="portfolio-caption-subheading text-muted">Harga Rp<?= $produk->harga ?></div>
+                                <div class="portfolio-caption-subheading text-muted">Stok <?= $produk->stok ?></div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="col-lg-4 col-sm-6 mb-4"></div>

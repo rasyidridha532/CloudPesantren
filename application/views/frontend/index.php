@@ -108,6 +108,12 @@
             <div class="text-center">
                 <h2 class="section-heading text-uppercase">Tentang Kami</h2>
                 <h3 class="section-subheading text-muted">Sebagaimana pesantren lain pada umumnya inti aktivitas di Daarut Tauhiid adalah di bidang pendidikan, dakwah & sosial. Namun sebagai sebuah pesantren, maka pada pesantren Daarut Tauhiid terdapat beberapa keunikan atau ke-khas-an dibandingkan Pesantren lain pada umumnya. Salah satu diantaranya adalah tingginya intensitas aktivitas [usaha] ekonomi di dalam lingkungan Pesantren Daarut Tauhiid. Tingginya intensitas aktivitas [usaha] ekonomi tersebut dapat dirasakan baik sejak awal masa pendirian maupun hingga saat ini.</h3>
+                <div class="col-sm-6">
+                    <img src="<?= base_url(); ?>assets/dist/img/dt1.jpg">
+                </div>
+                <div class="col-sm-6">
+                    <img src="<?= base_url(); ?>assets/dist/img/dt2.jpg">
+                </div>
             </div>
         </div>
     </section>

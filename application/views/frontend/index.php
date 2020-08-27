@@ -555,7 +555,7 @@
     <script src="<?= base_url(); ?>assets/dist/mail/jqBootstrapValidation.js"></script>
     <script src="<?= base_url(); ?>assets/dist/mail/contact_me.js"></script>
     <!-- Core theme JS-->
-    <script src="<?= base_url(); ?>assets/dist/js/scripts.js"></script>
+    <script src="<?= base_url(); ?>assets/js/scripts.js"></script>
 </body>
 
 </html>

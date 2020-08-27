@@ -160,6 +160,7 @@ class Produk extends CI_Controller
         $row = $this->Produk_model->get_by_id($id);
 
         if ($row) {
+            unlink('./uploads/file/' . $row->gambar);
             $this->Produk_model->delete($id);
             $this->session->set_flashdata('message', '<div class="alert alert-success">Data Berhasil Dihapus</div>');
             redirect(site_url('produk'));
@@ -178,14 +179,6 @@ class Produk extends CI_Controller
         $config['max_size'] = 4096;
         $config['file_name'] = 'Produk-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
-        $resize['image_library'] = 'gd2';
-        $resize['source_image'] = './uploads/file/' . $config['file_name'];
-        $resize['create_thumb'] = TRUE;
-        $resize['maintain_ratio'] = TRUE;
-        $resize['width'] = 300;
-        $resize['heigth'] = 300;
-
-        $this->load->library('image_lib', $resize);
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
@@ -193,13 +186,28 @@ class Produk extends CI_Controller
             redirect(site_url('produk/create'));
         } else {
             $fileData = $this->upload->data();
-            $resizer = $this->image_lib->resize();
+            $this->_resize_image($fileData['file_name']);
             $uploadFile['namafile'] = $fileData['file_name'];
         }
 
         if (!empty($uploadFile)) {
             return $uploadFile;
         }
+    }
+
+    private function _resize_image($filename)
+    {
+        $resize['image_library'] = 'gd2';
+        $resize['source_image'] = './uploads/file/' . $filename;
+        $resize['create_thumb'] = FALSE;
+        $resize['maintain_ratio'] = TRUE;
+        $resize['width'] = 300;
+        $resize['heigth'] = 300;
+        $resize['new_image'] = './uploads/file/' . $filename;
+
+        $this->load->library('image_lib', $resize);
+
+        $this->image_lib->resize();
     }
 
     public function _rules()

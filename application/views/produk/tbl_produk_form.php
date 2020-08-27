@@ -35,6 +35,10 @@
                 <label for="int">Harga <?php echo form_error('harga') ?></label>
                 <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" value="<?php echo $harga; ?>" />
             </div>
+            <div class="form-group">
+                <label class="col-md-2 control-label" for="File">Pilih Gambar...</label>
+                <input type="file" name="gambar" class="form-control">
+            </div>
             <input type="hidden" name="id_produk" value="<?php echo $id_produk; ?>" />
             <button type="submit" class="btn btn-primary"><?php echo $button ?></button>
             <a href="<?php echo site_url('produk') ?>" class="btn btn-default">Cancel</a>

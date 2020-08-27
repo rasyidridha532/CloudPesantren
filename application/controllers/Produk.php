@@ -66,6 +66,7 @@ class Produk extends CI_Controller
             'id_jenis' => set_value('id_jenis'),
             'stok' => set_value('stok'),
             'harga' => set_value('harga'),
+            'gambar' => set_value('gambar'),
             'foto' => $fotoprofil,
             'nama' => $nama,
             'role' => $role,
@@ -84,11 +85,15 @@ class Produk extends CI_Controller
         if ($this->form_validation->run() == FALSE) {
             $this->create();
         } else {
+            $file_spec = $this->_upload_file();
+            $nama_file = $file_spec['namafile'];
+
             $data = array(
                 'nama_produk' => $this->input->post('nama_produk', TRUE),
                 'id_jenis' => $this->input->post('id_jenis', TRUE),
                 'stok' => $this->input->post('stok', TRUE),
                 'harga' => $this->input->post('harga', TRUE),
+                'gambar' => $nama_file
             );
 
             $this->Produk_model->insert($data);
@@ -161,6 +166,30 @@ class Produk extends CI_Controller
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-failed">Data tidak ditemukan!</div>');
             redirect(site_url('produk'));
+        }
+    }
+
+    private function _upload_file()
+    {
+        $uploadFile = [];
+
+        $config['upload_path'] = './uploads/file/';
+        $config['allowed_types'] = 'jpg|jpeg|png';
+        $config['max_size'] = 4096;
+        $config['file_name'] = 'Produk-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
+
+        $this->load->library('upload', $config);
+
+        if (!$this->upload->do_upload('gambar')) {
+            $this->session->set_flashdata('message', '<div class="alert alert-failed">Gambar tidak support!</div>');
+            redirect(site_url('file/create'));
+        } else {
+            $fileData = $this->upload->data();
+            $uploadFile['namafile'] = $fileData['file_name'];
+        }
+
+        if (!empty($uploadFile)) {
+            return $uploadFile;
         }
     }
 

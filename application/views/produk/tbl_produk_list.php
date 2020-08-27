@@ -58,7 +58,9 @@
                             <td>Rp<?php echo $produk->harga ?></td>
                             <td>
                                 <a href="<?= site_url('produk/update/' . $produk->id_produk); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
-                                <a href="<?= site_url('produk/delete/' . $produk->id_produk); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
+                                <?php if ($role = 'Admin') {  ?>
+                                    <a href="<?= site_url('produk/delete/' . $produk->id_produk); ?>" onclick="return confirm('Apakah Anda Yakin Ingin Menghapus ?')" class="btn btn-block btn-danger btn-sm">Delete</a>
+                                <?php } ?>
                             </td>
                         </tr>
                     <?php

@@ -5,6 +5,12 @@ if (!defined('BASEPATH'))
 
 class Home extends CI_Controller
 {
+    function __construct()
+    {
+        parent::__construct();
+        $this->load->model('Produk_model');
+    }
+
     public function index()
     {
         $this->load->view('frontend/index');

@@ -119,7 +119,7 @@
                 <div class="col-lg-4 my-3 my-lg-0">
                     <a class="btn btn-dark btn-social mx-2" href="https://twitter.com/daarutauhiidbdg"><i class="fab fa-twitter"></i></a>
                     <a class="btn btn-dark btn-social mx-2" href="https://www.facebook.com/daaruttauhiid"><i class="fab fa-facebook-f"></i></a>
-                    <a class="btn btn-dark btn-social mx-2" href="https://www.instagram.com/pesantrendaaruttauhiid/"><i class="fab fa-instagram-in"></i></a>
+                    <a class="btn btn-dark btn-social mx-2" href="https://www.youtube.com/channel/UCrh1q3YNy5KAeKJS3b6YB8g"><i class="fab fa-youtube"></i></a>
                 </div>
             </div>
         </div>

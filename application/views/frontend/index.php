@@ -89,11 +89,11 @@
                 <div class="col-lg-4 col-sm-6 mb-4">
                     <div class="portfolio-item">
                         <a class="portfolio-link" data-toggle="modal" href="#portfolioModal2">
-                            <img class="img-fluid" src="<?= base_url(); ?>assets/dist/img/portfolio/02-thumbnail.jpg" alt="" />
+                            <img class="img-fluid" src="<?= base_url(); ?>uploads/file/<?= $produk->gambar ?>" alt="" />
                         </a>
                         <div class="portfolio-caption">
-                            <div class="portfolio-caption-heading">Explore</div>
-                            <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
+                            <div class="portfolio-caption-heading"><?= $produk->nama_produk ?></div>
+                            <div class="portfolio-caption-subheading text-muted">Stok <?= $produk->stok ?></div>
                         </div>
                     </div>
                 </div>

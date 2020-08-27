@@ -36,7 +36,7 @@
                 <input type="text" class="form-control" name="harga" id="harga" placeholder="Harga" value="<?php echo $harga; ?>" />
             </div>
             <div class="form-group">
-                <label class="col-md-2 control-label" for="File">Pilih Gambar...</label>
+                <label class="col-md-2 control-label" for="Gambar">Pilih Gambar...</label>
                 <input type="file" name="gambar" class="form-control">
             </div>
             <input type="hidden" name="id_produk" value="<?php echo $id_produk; ?>" />

@@ -182,7 +182,7 @@ class Produk extends CI_Controller
 
         if (!$this->upload->do_upload('gambar')) {
             $this->session->set_flashdata('message', '<div class="alert alert-failed">Gambar tidak support!</div>');
-            redirect(site_url('file/create'));
+            redirect(site_url('produk/create'));
         } else {
             $fileData = $this->upload->data();
             $uploadFile['namafile'] = $fileData['file_name'];

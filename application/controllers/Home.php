@@ -15,6 +15,13 @@ class Home extends CI_Controller
     {
         $produk = $this->Produk_model->get_produk();
 
-        $this->load->view('frontend/index', $produk);
+        $data = array(
+            'nama' => $produk->nama_barang,
+            'harga' => $produk->harga,
+            'gambar' => $produk->gambar,
+            'stok' => $produk->stok
+        );
+
+        $this->load->view('frontend/index', $data);
     }
 }

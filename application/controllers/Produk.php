@@ -175,7 +175,7 @@ class Produk extends CI_Controller
 
         $config['upload_path'] = './uploads/file/';
         $config['allowed_types'] = 'jpg|jpeg|png';
-        $config['max_size'] = 4096;
+        $config['max_size'] = 2048;
         $config['file_name'] = 'Produk-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
         $this->load->library('upload', $config);

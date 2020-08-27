@@ -4519,6 +4519,11 @@ input[type=button].btn-block {
   }
 }
 
+.column {
+  float: left; 
+  padding: 5px;
+}
+
 .card-columns .card {
   margin-bottom: 0.75rem;
 }

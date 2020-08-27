@@ -44,6 +44,7 @@
                             <th>Jenis Produk</th>
                             <th>Harga</th>
                             <th>Stok Barang</th>
+                            <th>Gambar</th>
                             <th>Action</th>
                         </tr>
                     </thead>
@@ -54,8 +55,9 @@
                             <td width="80px"><?php echo ++$start ?></td>
                             <td><?php echo $produk->nama_produk ?></td>
                             <td><?php echo $produk->nama_jenis ?></td>
-                            <td><?php echo $produk->stok ?></td>
-                            <td>Rp<?php echo $produk->harga ?></td>
+                            <td><?php echo $produk->harga ?></td>
+                            <td>Rp<?php echo $produk->stok ?></td>
+                            <td><img src="<?= base_url(); ?>uploads/file/<? echo $produk->gambar?>"></td>
                             <td>
                                 <a href="<?= site_url('produk/update/' . $produk->id_produk); ?>" class="btn btn-block btn-warning btn-sm">Update</a>
                                 <?php if ($role = 'Admin') {  ?>

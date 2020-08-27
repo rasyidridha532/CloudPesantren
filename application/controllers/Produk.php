@@ -178,13 +178,22 @@ class Produk extends CI_Controller
         $config['max_size'] = 4096;
         $config['file_name'] = 'Produk-' . date('dmy') . '-' . substr(md5(rand()), 0, 10);
 
+        $resize['image_library'] = 'gd2';
+        $resize['source_image'] = './uploads/file/' . $config['file_name'];
+        $resize['create_thumb'] = TRUE;
+        $resize['maintain_ratio'] = TRUE;
+        $resize['width'] = 300;
+        $resize['heigth'] = 300;
+
+        $this->load->library('image_lib', $resize);
         $this->load->library('upload', $config);
 
         if (!$this->upload->do_upload('gambar')) {
-            $this->session->set_flashdata('message', '<div class="alert alert-failed">Gambar tidak support!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-failed"><?php $this->upload->display_errors(); ?></div>');
             redirect(site_url('produk/create'));
         } else {
             $fileData = $this->upload->data();
+            $resizer = $this->image_lib->resize();
             $uploadFile['namafile'] = $fileData['file_name'];
         }
 

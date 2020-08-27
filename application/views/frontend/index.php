@@ -93,6 +93,7 @@
                         </a>
                         <div class="portfolio-caption">
                             <div class="portfolio-caption-heading"><?= $produk->nama_produk ?></div>
+                            <div class="portfolio-caption-subheading text-muted">Harga Rp<?= $produk->harga ?></div>
                             <div class="portfolio-caption-subheading text-muted">Stok <?= $produk->stok ?></div>
                         </div>
                     </div>
